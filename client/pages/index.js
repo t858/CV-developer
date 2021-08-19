@@ -11,7 +11,7 @@ export default function Home() {
       : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
 
   return (
-    <section className="h-screen w-screen flex justify-center items-center">
+    <main className="h-screen w-screen flex justify-center items-center">
       <div>
         <h1 className="font-semibold text-6xl">cvmaker.vercel.app</h1>
         <h6 className="text-xl text-gray-600">build you own cv for free</h6>
@@ -27,6 +27,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

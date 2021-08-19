@@ -38,7 +38,7 @@ export default function Wrapper({ children }) {
   return (
     <Context.Provider value={{ state, dispatch }}>
       <Loading />
-      <main>{children}</main>
+      {children}
       <ModalLogin />
     </Context.Provider>
   );

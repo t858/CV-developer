@@ -1,7 +1,9 @@
+import Layout from "../components/Layout";
+
 export default function profile() {
-    return (
-        <section>
-            profile
-        </section>
-    )
+  return (
+    <Layout>
+      <section>profile</section>
+    </Layout>
+  );
 }
