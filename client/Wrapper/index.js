@@ -1,11 +1,14 @@
 import { createContext, useContext, useReducer } from "react";
 
+import { ModalLogin } from "./ModalLogin";
+import { Loading } from "./Loading";
+
 const Context = createContext();
 
 const initialState = {
   isLoading: false,
   isModalLogin: false,
-  isLogin: false,
+  isLogin: !false,
 };
 
 const reducer = (state, action) => {
@@ -30,10 +33,15 @@ const reducer = (state, action) => {
   }
 };
 
-export default function ContextWrapper({ children }) {
+export default function Wrapper({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
-  
+  return (
+    <Context.Provider value={{ state, dispatch }}>
+      <Loading />
+      <main>{children}</main>
+      <ModalLogin />
+    </Context.Provider>
+  );
 }
 
 export function useGlobalContext() {

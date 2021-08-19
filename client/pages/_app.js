@@ -1,12 +1,12 @@
-import GlobalContext from "../context/GlobalContext";
+import Wrapper from "../Wrapper";
 import "tailwindcss/tailwind.css";
 import "./style.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <GlobalContext>
+    <Wrapper>
       <Component {...pageProps} />
-    </GlobalContext>
+    </Wrapper>
   );
 }
 
