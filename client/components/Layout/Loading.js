@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../../pages/_app";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Loading = () => {
-  const { state } = useContext(GlobalContext);
+  const { state } = useGlobalContext();
   return (
     state.isLoading && (
       <div

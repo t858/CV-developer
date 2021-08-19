@@ -1,11 +1,12 @@
-import React from "react";
 import { Loading } from "./Loading";
+import Login from "./Login";
 
 export default function index({ children }) {
   return (
     <>
-      <Loading />
       {children}
+      <Loading />
+      <Login />
     </>
   );
 }
