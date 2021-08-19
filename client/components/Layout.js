@@ -2,10 +2,8 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import useOutsideClick from "../utils/useOutsideClick";
-import { useGlobalContext } from "../Wrapper";
 
 export default function Layout({ children }) {
-  const { state, dispatch } = useGlobalContext();
   const [isDropdown, setDropdown] = useState(false);
 
   const ref = useRef();

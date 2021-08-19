@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import useOutsideClick from "../../utils/useOutsideClick";
+import useOutsideClick from "../../../utils/useOutsideClick"
 import { Header } from "./Header";
 import { LoginForm } from "./LoginForm";
-import { useGlobalContext } from "..";
+import { useGlobalContext } from "../Wrapper";
 
 export function ModalLogin() {
   const { state, dispatch } = useGlobalContext();

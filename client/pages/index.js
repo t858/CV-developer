@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useGlobalContext } from "../Wrapper";
+import { useGlobalContext } from "./_app/Wrapper";
+
 
 export default function Home() {
   const { state, dispatch } = useGlobalContext();

@@ -6,7 +6,7 @@ export default function Dashboard() {
     <Layout>
       <section>
         <div className="w-2/3 mx-auto py-3 space-y-5">
-          <h4 className="font-semibold text-2xl">Recent projects</h4>
+          <h4 className="font-semibold text-2xl">My projects</h4>
           <div className="grid grid-cols-3 gap-7">
             <CardProject />
             <CardProject />
