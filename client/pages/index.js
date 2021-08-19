@@ -7,7 +7,7 @@ export default function Home() {
 
   const getStarted = () =>
     state.isLogin
-      ? router.push("/profile")
+      ? router.push("/dashboard")
       : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
 
   return (

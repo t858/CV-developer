@@ -18,11 +18,7 @@ export default function Layout({ children }) {
         </Link>
         <div
           ref={ref}
-          onClick={() =>
-            state.isLogin
-              ? setDropdown(!isDropdown)
-              : dispatch({ type: "CHANGE_ISMODAL", value: true })
-          }
+          onClick={() => setDropdown(!isDropdown)}
           className="bg-indigo-600 h-10 w-10 relative rounded-full border-2 border-gray-200 flex justify-center items-center cursor-pointer"
         >
           <span className="text-white text-lg">?</span>
