@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // import { GlobalState } from "../../../config/contextAPI";
 
 export const LoginForm = ({ isSignUp, setSignUp }) => {

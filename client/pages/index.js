@@ -1,6 +1,11 @@
 import Layout from "../components/Layout";
+import { useGlobalContext } from "../context/GlobalContext";
 
 export default function Home() {
+  const { state, dispatch } = useGlobalContext();
+  
+  const getStarted = () => state.isLogin ? "" : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
+
   return (
     <Layout>
       <div className="h-screen w-screen flex justify-center items-center">
@@ -11,7 +16,10 @@ export default function Home() {
             <button className="ring-4 ring-gray-300 text-gray-600 py-2 px-5 text-lg rounded-2xl">
               Github Repository
             </button>
-            <button className="ring-4 ring-gray-300 text-gray-600 py-2 px-5 text-lg rounded-2xl">
+            <button
+              onClick={getStarted}
+              className="ring-4 ring-gray-300 text-gray-600 py-2 px-5 text-lg rounded-2xl"
+            >
               Get Started
             </button>
           </div>

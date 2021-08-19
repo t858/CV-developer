@@ -3,8 +3,9 @@ import { createContext, useContext, useReducer } from "react";
 const Context = createContext();
 
 const initialState = {
-  isLoading: !false,
-  isModal: false,
+  isLoading: false,
+  isModalLogin: false,
+  isLogin: false,
 };
 
 const reducer = (state, action) => {
@@ -14,10 +15,15 @@ const reducer = (state, action) => {
         ...state,
         isLoading: action.payload,
       };
-    case "SET_MODAL":
+    case "SET_MODAL_LOGIN":
       return {
         ...state,
-        isModal: action.payload,
+        isModalLogin: action.payload,
+      };
+    case "SET_LOGIN":
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;
@@ -26,9 +32,8 @@ const reducer = (state, action) => {
 
 export default function ContextWrapper({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return (
-    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
-  );
+  return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+  
 }
 
 export function useGlobalContext() {

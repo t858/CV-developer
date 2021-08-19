@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Header = ({ isSignUp, setSignUp, dispatch }) => {
   return (
     <div className="flex justify-between items-center px-6 bg-gray-100">
@@ -35,7 +33,7 @@ export const Header = ({ isSignUp, setSignUp, dispatch }) => {
       <div
         onClick={() =>
           dispatch({
-            type: "CHANGE_ISMODAL",
+            type: "SET_MODAL_LOGIN",
             value: false,
           })
         }

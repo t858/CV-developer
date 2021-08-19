@@ -1,3 +1,18 @@
+/* default  */
+
+button,
+button:focus,
+input,
+input:focus,
+textarea,
+textarea:focus,
+select,
+select:focus,
+a {
+  outline: none;
+  text-decoration: none;
+}
+
 /* loading  */
 
 .loader-dots div {

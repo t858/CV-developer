@@ -1,12 +1,12 @@
 import { Loading } from "./Loading";
-import Login from "./Login";
+import { ModalLogin } from "./ModalLogin";
 
 export default function index({ children }) {
   return (
     <>
       {children}
       <Loading />
-      <Login />
+      <ModalLogin />
     </>
   );
 }

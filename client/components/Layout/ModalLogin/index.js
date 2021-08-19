@@ -1,22 +1,22 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import useOutsideClick from "../../../utils/useOutsideClick";
 import { Header } from "./Header";
 import { LoginForm } from "./LoginForm";
 import { useGlobalContext } from "../../../context/GlobalContext";
 
-export default function Login() {
+export function ModalLogin() {
   const { state, dispatch } = useGlobalContext();
-  const ref = useRef();
-  useOutsideClick(
-    ref,
-    () => state.isModal && dispatch({ type: "SET_MODAL", value: false })
-  );
   const [isSignUp, setSignUp] = useState(false);
+
+  const ref = useRef();
+  useOutsideClick(ref, () =>
+    dispatch({ type: "SET_MODAL_LOGIN", value: false })
+  );
 
   return (
     <AnimatePresence exitBeforeEnter>
-      {state.isModal && (
+      {state.isModalLogin && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
