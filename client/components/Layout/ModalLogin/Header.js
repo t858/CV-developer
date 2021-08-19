@@ -34,7 +34,7 @@ export const Header = ({ isSignUp, setSignUp, dispatch }) => {
         onClick={() =>
           dispatch({
             type: "SET_MODAL_LOGIN",
-            value: false,
+            payload: false,
           })
         }
         className="cursor-pointer z-50"

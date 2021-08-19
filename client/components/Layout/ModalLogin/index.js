@@ -10,8 +10,11 @@ export function ModalLogin() {
   const [isSignUp, setSignUp] = useState(false);
 
   const ref = useRef();
-  useOutsideClick(ref, () =>
-    dispatch({ type: "SET_MODAL_LOGIN", value: false })
+  useOutsideClick(
+    ref,
+    () =>
+      state.isModalLogin &&
+      dispatch({ type: "SET_MODAL_LOGIN", payload: false })
   );
 
   return (

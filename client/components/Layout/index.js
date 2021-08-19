@@ -4,9 +4,9 @@ import { ModalLogin } from "./ModalLogin";
 export default function index({ children }) {
   return (
     <>
-      {children}
       <Loading />
       <ModalLogin />
+      {children}
     </>
   );
 }

@@ -1,10 +1,15 @@
+import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export default function Home() {
   const { state, dispatch } = useGlobalContext();
-  
-  const getStarted = () => state.isLogin ? "" : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
+  const router = useRouter();
+
+  const getStarted = () =>
+    state.isLogin
+      ? router.push("/profile")
+      : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
 
   return (
     <Layout>
