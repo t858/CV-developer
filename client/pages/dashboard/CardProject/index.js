@@ -10,8 +10,8 @@ export const CardProject = () => {
   const ref = useRef();
   useOutsideClick(ref, () => isDropdown && setDropdown(false));
   return (
-    <div className="relative shadow-md rounded-lg bg-white">
-      <div>
+    <div className="relative shadow-md rounded-lg bg-white h-[150px]">
+      <div className="flex flex-col justify-between h-full">
         <div className="p-4">
           <h6 className="font-semibold">Alfirman Ejha Pahlepi</h6>
           <p className="text-gray-500">Student</p>
@@ -19,7 +19,7 @@ export const CardProject = () => {
         <div className="border-t border-gray-300 py-2 px-4 text-sm text-gray-500 flex items-center justify-between">
           <p className="flex items-center space-x-1">
             <Heroicons d={heroCheck} size="h-5 w-5" />
-            <span>Diperbarui</span>
+            <span>Dibuat</span>
           </p>
           <p>26-Juli-2021 13:3 WIB</p>
         </div>
