@@ -1,7 +1,7 @@
-import { forwardRef } from "react";
-import { Heroicons } from "../../../components/Heroicons";
 import Image from "next/image";
-import { heroMail1, heroMail2, heroMap, heroWeb } from "../../../assets/svg";
+import { forwardRef } from "react";
+import { LeftData } from "./LeftData";
+import { RightData } from "./RightData";
 
 export const Template2 = forwardRef((props, ref) => {
   return (
@@ -19,31 +19,7 @@ export const Template2 = forwardRef((props, ref) => {
           />
         </div>
         {lefts.map((l, idx) => (
-          <div key={idx} className="space-y-4 mb-14">
-            <h4 className="uppercase text-xl font-bold text-center tracking-widest">
-              {l.title}
-            </h4>
-            <ul className="w-3/4 mx-auto space-y-2">
-              {l.data.map((el, index) => (
-                <li
-                  key={index}
-                  className={`
-                flex items-center text-sm ${el.icon && "space-x-4"}`}
-                >
-                  {el.icon && (
-                    <Heroicons
-                      d={el.icon}
-                      d2={el?.icon2}
-                      size="h-6 w-6"
-                      color=""
-                      solid
-                    />
-                  )}
-                  <span className="w-full">{el.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <LeftData key={idx} l={l} />
         ))}
       </div>
       <div className="h-full w-2/3 px-10 py-16">
@@ -54,31 +30,7 @@ export const Template2 = forwardRef((props, ref) => {
           <h4 className="font-semibold text-3xl">Calon Programmer</h4>
         </div>
         {rights.map((l, idx) => (
-          <div key={idx} className="space-y-2 mb-8">
-            <h4 className="uppercase text-xl text-[#335384] font-bold tracking-widest">
-              {l.title}
-            </h4>
-            <ul className="space-y-1">
-              {l.data.map((el, index) => (
-                <li
-                  key={index}
-                  className={`
-                flex items-center text-sm ${el.icon && "space-x-4"}`}
-                >
-                  {el.icon && (
-                    <Heroicons
-                      d={el.icon}
-                      d2={el?.icon2}
-                      size="h-6 w-6"
-                      color=""
-                      solid
-                    />
-                  )}
-                  <span className="w-full">{el.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <RightData key={idx} l={l} />
         ))}
       </div>
     </div>
@@ -91,15 +43,14 @@ const lefts = [
     data: [
       {
         text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        icon: heroMap,
+        icon: "/assets/icon/map-marker.png",
       },
       {
-        icon: heroMail1,
-        icon2: heroMail2,
+        icon: "/assets/icon/mail.png",
         text: "What is Lorem Ipsum",
       },
       {
-        icon: heroWeb,
+        icon: "/assets/icon/web.png",
         text: "What is Lorem Ipsum",
       },
     ],
