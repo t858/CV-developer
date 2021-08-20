@@ -1,6 +1,5 @@
 import { heroQuest } from "../assets/svg";
 
-
 export const Heroicons = ({
   d,
   d2,
@@ -41,6 +40,14 @@ export const Heroicons = ({
       fill="currentColor"
     >
       <path fillRule="evenodd" d={d} clipRule="evenodd" />
+      {d2 && (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={strokeWidth}
+          d={d2}
+        />
+      )}
     </svg>
   );
 };
