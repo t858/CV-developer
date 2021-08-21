@@ -1,18 +1,28 @@
 import { useRef, useState } from "react";
-// import Layout from "../../components/Layout";
-// import { Template1 } from "./Template1";
 import Image from "next/image";
-import ReactToPdf from "react-to-pdf";
 import { Template2 } from "./Template2";
+import { TemplateOption } from "./TemplateOption";
+import { AnimatePresence } from "framer-motion";
+import { Print } from "./Print";
 
 export default function Cv() {
   const [isTemplateOption, setTemplateOption] = useState(false);
   const ref = useRef();
 
+  const togleTheme = () => {
+    document.querySelector("body")?.classList.contains("dark")
+      ? document.querySelector("body").removeAttribute("class")
+      : document.querySelector("body").classList.add("dark");
+  };
+
   const buttons = [
     {
-      icon: "/assets/icon/sun.png",
+      icon: "/assets/icon/arrow.png",
       action: () => alert("belum diatur"),
+    },
+    {
+      icon: "/assets/icon/sun.png",
+      action: () => togleTheme(),
     },
     {
       icon: "/assets/icon/list.png",
@@ -28,40 +38,40 @@ export default function Cv() {
     },
   ];
 
+  const themeTransition = {
+    transition: "all .5s ease",
+    WebkitTransition: "all .5s ease",
+    MozTransition: "all .5s ease",
+  };
+
   return (
-    <section className="relative">
-      <div className="flex justify-center space-x-5 py-10">
-        {/* <Tempalate1 ref={ref} /> */}
-        <Template2 ref={ref} />
+    <section style={themeTransition} className="relative dark:bg-gray-900">
+      <div className="flex justify-center space-x-5 py-10 ">
+        <div
+          ref={ref}
+          // h-[561px] w-[397.5px]
+          className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
+        >
+          <Template2 />
+        </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (
             <button
               key={index}
               onClick={el.action}
-              className="border border-gray-400 rounded-full h-12 w-12 flex justify-center items-center"
+              className="border border-gray-300 rounded-full h-12 w-12 flex justify-center items-center"
             >
               <Image src={el.icon} width={25} height={25} />
             </button>
           ))}
-          <ReactToPdf targetRef={ref} filename="cv.pdf">
-            {({ toPdf }) => (
-              <button
-                className="border border-gray-400 rounded-full h-12 w-12 flex justify-center items-center"
-                onClick={toPdf}
-              >
-                <Image src="/assets/icon/print.png" width={25} height={25} />
-              </button>
-            )}
-          </ReactToPdf>
+          <Print ref={ref} />
         </div>
       </div>
-      {isTemplateOption && (
-        <div className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-3">
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isTemplateOption && (
+          <TemplateOption isTemplateOption={isTemplateOption} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

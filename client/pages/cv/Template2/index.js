@@ -1,14 +1,10 @@
 import Image from "next/image";
-import { forwardRef } from "react";
 import { LeftData } from "./LeftData";
 import { RightData } from "./RightData";
 
-export const Template2 = forwardRef((props, ref) => {
+export const Template2 = () => {
   return (
-    <div
-      className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg flex"
-      ref={ref}
-    >
+    <div className="flex h-full w-full">
       <div className="h-full bg-[#335384] w-1/3 text-indigo-50">
         <div className="py-10 flex justify-center mb-5">
           <Image
@@ -35,7 +31,7 @@ export const Template2 = forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+};
 
 const lefts = [
   {
