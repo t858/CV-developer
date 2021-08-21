@@ -1,10 +1,12 @@
 import Image from "next/image";
+import { LeftData } from "./LeftData";
+import { RightData } from "./Rightdata";
 
 export default function Template3() {
   return (
     <template className="flex h-full w-full">
       <div className="w-2/5 flex items-center">
-        <div className="h-[85%] w-full border-8 border-[#10375d]">
+        <div className="h-[85%] w-full border-8 border-l-0 border-[#10375d]">
           <div className="flex justify-center relative -top-10">
             <Image
               width="250px"
@@ -21,98 +23,67 @@ export default function Template3() {
                 Calon Programmer
               </h4>
             </div>
-            <div className="space-y-2 mb-8">
-              <h6 className="font-bold uppercase text-[#10375d]">
-                PROfil pribadi
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-            <div className="space-y-2 mb-8">
-              <h6 className="font-bold uppercase text-[#10375d]">
-                Keahlian khusus
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-            <div className="space-y-2 mb-8">
-              <h6 className="font-bold uppercase text-[#10375d]">
-                informasi kontak
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
+            {leftData.map((el, index) => (
+              <LeftData key={index} el={el} />
+            ))}
           </div>
         </div>
       </div>
       <div className="w-3/5 flex items-center justify-center">
         <div className="w-3/4 h-[85%] space-y-7">
-          <div className="space-y-7">
-            <h5 className="font-bold text-xl text-[#10375d] uppercase tracking-widest bg-gray-300 px-5 py-2">
-              pengalaman kerja
-            </h5>
-            <div className="space-y-2">
-              <h6 className="font-bold text-lg text-[#10375d] uppercase">
-                software engineer
-              </h6>
-              <h6 className="font-semibold text-lg text-[#10375d]">
-                Lorem Technology | Jan 1999 - Now
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h6 className="font-bold text-lg text-[#10375d] uppercase">
-                software engineer
-              </h6>
-              <h6 className="font-semibold text-lg text-[#10375d]">
-                Lorem Technology | Jan 1999 - Now
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-          </div>
-          <div className="space-y-7">
-            <h5 className="font-bold text-xl text-[#10375d] uppercase tracking-widest bg-gray-300 px-5 py-2">
-              Riwayat Akademis
-            </h5>
-            <div className="space-y-2">
-              <h6 className="font-bold text-lg text-[#10375d] uppercase">
-                software engineer
-              </h6>
-              <h6 className="font-semibold text-lg text-[#10375d]">
-                Lorem Technology | Jan 1999 - Now
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h6 className="font-bold text-lg text-[#10375d] uppercase">
-                software engineer
-              </h6>
-              <h6 className="font-semibold text-lg text-[#10375d]">
-                Lorem Technology | Jan 1999 - Now
-              </h6>
-              <p className="text-sm text-gray-600">
-                What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What
-                is Lorem Ipsum Lorem Ipsum is simply dummy text of the
-              </p>
-            </div>
-          </div>
+          {rightData.map((el, index) => (
+            <RightData key={index} el={el} />
+          ))}
         </div>
       </div>
     </template>
   );
 }
+
+const leftData = [
+  {
+    title: "PROFIL PRIBADI",
+    text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+  },
+  {
+    title: "keahlian khusus",
+    text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+  },
+  {
+    title: "informasi kontak",
+    text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+  },
+];
+
+const rightData = [
+  {
+    title: "PENGALAMAN KERJA",
+    data: [
+      {
+        title: "Software engineer",
+        subtitle: "Lorem Technology | Jan 1999 - Now",
+        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+      },
+      {
+        title: "Software engineer",
+        subtitle: "Lorem Technology | Jan 1999 - Now",
+        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+      },
+    ],
+  },
+  {
+    title: "RIwayat akademis",
+    data: [
+      {
+        title: "Software engineer",
+        subtitle: "Lorem Technology | Jan 1999 - Now",
+        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+      },
+      {
+        title: "Software engineer",
+        subtitle: "Lorem Technology | Jan 1999 - Now",
+        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+      },
+    ],
+  },
+];
