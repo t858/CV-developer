@@ -1,18 +1,24 @@
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { Template2 } from "./Template2";
 import { TemplateOption } from "./TemplateOption";
 import { AnimatePresence } from "framer-motion";
 import { Print } from "./Print";
+import { Button } from "./Button";
+import { useGlobalContext } from "../_app/GlobalContext";
 
 export default function Cv() {
   const [isTemplateOption, setTemplateOption] = useState(false);
+  const { state, dispatch } = useGlobalContext();
   const ref = useRef();
 
   const togleTheme = () => {
-    document.querySelector("body")?.classList.contains("dark")
-      ? document.querySelector("body").removeAttribute("class")
-      : document.querySelector("body").classList.add("dark");
+    if (state.isDark) {
+      document.querySelector("body").removeAttribute("class");
+      dispatch({ type: "SET_DARK", payload: false });
+    } else {
+      document.querySelector("body").classList.add("dark");
+      dispatch({ type: "SET_DARK", payload: true });
+    }
   };
 
   const buttons = [
@@ -21,7 +27,7 @@ export default function Cv() {
       action: () => alert("belum diatur"),
     },
     {
-      icon: "/assets/icon/sun.png",
+      icon: `/assets/icon/${state.isDark ? "moon" : "sun"}.png`,
       action: () => togleTheme(),
     },
     {
@@ -56,13 +62,7 @@ export default function Cv() {
         </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (
-            <button
-              key={index}
-              onClick={el.action}
-              className="border border-gray-300 rounded-full h-12 w-12 flex justify-center items-center"
-            >
-              <Image src={el.icon} width={25} height={25} />
-            </button>
+            <Button key={index} action={el.action} icon={el.icon} />
           ))}
           <Print ref={ref} />
         </div>

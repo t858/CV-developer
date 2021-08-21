@@ -9,6 +9,7 @@ const initialState = {
   isLoading: false,
   isModalLogin: false,
   isLogin: !false,
+  isDark: false,
 };
 
 const reducer = (state, action) => {
@@ -28,12 +29,17 @@ const reducer = (state, action) => {
         ...state,
         isLoading: action.payload,
       };
+    case "SET_DARK":
+      return {
+        ...state,
+        isDark: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default function Wrapper({ children }) {
+export default function GlobalContext({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Context.Provider value={{ state, dispatch }}>

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import useOutsideClick from "../../../utils/useOutsideClick"
 import { Header } from "./Header";
 import { LoginForm } from "./LoginForm";
-import { useGlobalContext } from "../Wrapper";
+import { useGlobalContext } from "../GlobalContext";
 
 export function ModalLogin() {
   const { state, dispatch } = useGlobalContext();

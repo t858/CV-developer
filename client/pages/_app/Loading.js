@@ -1,4 +1,4 @@
-import { useGlobalContext } from "./Wrapper";
+import { useGlobalContext } from "./GlobalContext";
 
 
 export const Loading = () => {

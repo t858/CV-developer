@@ -10,7 +10,12 @@ export const Print = forwardRef((props, ref) => {
           className="border border-gray-300 rounded-full h-12 w-12 flex justify-center items-center"
           onClick={toPdf}
         >
-          <Image src="/assets/icon/print.png" width={25} height={25} />
+          <Image
+            className="filter dark:invert"
+            src="/assets/icon/print.png"
+            width={25}
+            height={25}
+          />
         </button>
       )}
     </ReactToPdf>
