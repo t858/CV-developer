@@ -4,8 +4,8 @@ import { Card } from "./Card";
 
 export const Template1 = forwardRef((props, ref) => {
   return (
-    <div
-      className="h-[1142px] w-[795px] text-gray-800 shadow-lg flex flex-col justify-center space-y-10"
+    <template
+      className="flex flex-col justify-center space-y-10"
       ref={ref}
     >
       {/* head */}
@@ -34,6 +34,6 @@ export const Template1 = forwardRef((props, ref) => {
         <Card />
         <Card />
       </div>
-    </div>
+    </template>
   );
 });

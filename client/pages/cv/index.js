@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
-import { Template2 } from "./Template2";
 import { TemplateOption } from "./TemplateOption";
 import { AnimatePresence } from "framer-motion";
 import { Print } from "./Print";
 import { Button } from "./Button";
 import { useGlobalContext } from "../_app/GlobalContext";
+// import { Template2 } from "./Template2";
+import Template3 from "./Template3";
+// import { Template1 } from "./Template1";
 
 export default function Cv() {
   const [isTemplateOption, setTemplateOption] = useState(false);
@@ -12,11 +14,12 @@ export default function Cv() {
   const ref = useRef();
 
   const togleTheme = () => {
+    const body = document.querySelector("body");
     if (state.isDark) {
-      document.querySelector("body").removeAttribute("class");
+      body.removeAttribute("class");
       dispatch({ type: "SET_DARK", payload: false });
     } else {
-      document.querySelector("body").classList.add("dark");
+      body.classList.add("dark");
       dispatch({ type: "SET_DARK", payload: true });
     }
   };
@@ -58,7 +61,7 @@ export default function Cv() {
           // h-[561px] w-[397.5px]
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
-          <Template2 />
+          <Template3 />
         </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (
