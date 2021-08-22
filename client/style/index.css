@@ -59,10 +59,16 @@ a {
   }
 }
 
-.triangle {
+.triangle-top {
   width: 0;
   height: 0;
   border-top: 180px solid transparent;
-  /* border-left: 500px solid #317a8b; */
   border-bottom: 180px solid transparent;
+}
+
+.triangle-bottom {
+  width: 0;
+  height: 0;
+  border-top: 140px solid transparent;
+  border-bottom: 140px solid transparent;
 }
