@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { useGlobalContext } from "../customHooks/useGlobalContext";
 import { CricleButton } from "../components/atoms/CircleButton";
 import { PrintButton } from "../components/atoms/PrintButton";
@@ -7,7 +6,7 @@ import { DesignOption } from "../components/molecules/DesignOption";
 import { Template4 } from "../components/organisms/Template4";
 
 export default function Cv() {
-  const [isTemplateOption, setTemplateOption] = useState(false);
+  const [isOption, setOption] = useState(false);
   const { state, dispatch } = useGlobalContext();
   const ref = useRef();
 
@@ -33,14 +32,10 @@ export default function Cv() {
     },
     {
       icon: "/assets/icon/list.png",
-      action: () => setTemplateOption(!isTemplateOption),
+      action: () => setOption(!isOption),
     },
     {
       icon: "/assets/icon/palete.png",
-      action: () => alert("belum diatur"),
-    },
-    {
-      icon: "/assets/icon/github.png",
       action: () => alert("belum diatur"),
     },
   ];
@@ -67,7 +62,7 @@ export default function Cv() {
           <PrintButton ref={ref} />
         </div>
       </div>
-      <AnimatePresence>{isTemplateOption && <DesignOption />}</AnimatePresence>
+      <DesignOption isOption={isOption} setOption={setOption} />
     </section>
   );
 }
