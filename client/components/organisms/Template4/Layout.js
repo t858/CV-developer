@@ -12,7 +12,7 @@ export const Layout = ({ children }) => {
       {children}
       <div
         style={{ borderLeft: "500px solid #4fc8dc" }}
-        className="triangle-bottom absolute bottom-[-210px]"
+        className="triangle-bottom absolute bottom-[-207px]"
       ></div>
       <div
         style={{ borderRight: "500px solid #317a8b" }}
