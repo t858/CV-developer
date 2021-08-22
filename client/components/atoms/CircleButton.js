@@ -1,7 +1,6 @@
-import React from "react";
 import Image from "next/image";
 
-export const Button = ({ action, icon }) => {
+export const CricleButton = ({ action, icon }) => {
   return (
     <button
       onClick={action}

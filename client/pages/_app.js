@@ -1,6 +1,6 @@
-import GlobalContext from "./GlobalContext";
+import GlobalContext from "../config/context/GlobalContext";
+import "../style/index.css"
 import "tailwindcss/tailwind.css";
-import "./style.css";
 
 function MyApp({ Component, pageProps }) {
   return (

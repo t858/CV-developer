@@ -59,4 +59,10 @@ a {
   }
 }
 
-/* transition theme */
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 180px solid transparent;
+  /* border-left: 500px solid #317a8b; */
+  border-bottom: 180px solid transparent;
+}

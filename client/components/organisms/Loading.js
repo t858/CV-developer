@@ -1,5 +1,4 @@
-import { useGlobalContext } from "./GlobalContext";
-
+import { useGlobalContext } from "../../config/context/GlobalContext";
 
 export const Loading = () => {
   const { state } = useGlobalContext();

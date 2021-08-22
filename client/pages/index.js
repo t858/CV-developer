@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useGlobalContext } from "./_app/Wrapper";
+import { useGlobalContext } from "./_app/GlobalContext";
 
 
 export default function Home() {

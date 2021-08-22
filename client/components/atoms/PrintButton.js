@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import ReactToPdf from "react-to-pdf";
 import Image from "next/image";
 
-export const Print = forwardRef((props, ref) => {
+export const PrintButton = forwardRef((props, ref) => {
   return (
     <ReactToPdf targetRef={ref} filename="cv.pdf">
       {({ toPdf }) => (

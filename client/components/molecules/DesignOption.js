@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const TemplateOption = () => {
+export const DesignOption = () => {
   return (
     <motion.div
       initial={{ y: "25vh" }}

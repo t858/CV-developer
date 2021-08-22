@@ -1,12 +1,10 @@
 import { useRef, useState } from "react";
-import { TemplateOption } from "./TemplateOption";
 import { AnimatePresence } from "framer-motion";
-import { Print } from "./Print";
-import { Button } from "./Button";
-import { useGlobalContext } from "../_app/GlobalContext";
-// import { Template2 } from "./Template2";
-import Template3 from "./Template3";
-// import { Template1 } from "./Template1";
+import { useGlobalContext } from "../config/context/GlobalContext";
+import { CricleButton } from "../components/atoms/CircleButton";
+import { PrintButton } from "../components/atoms/PrintButton";
+import { DesignOption } from "../components/molecules/DesignOption";
+import { Template4 } from "../components/organisms/Template4";
 
 export default function Cv() {
   const [isTemplateOption, setTemplateOption] = useState(false);
@@ -58,23 +56,18 @@ export default function Cv() {
       <div className="flex justify-center space-x-5 py-10 ">
         <div
           ref={ref}
-          // h-[561px] w-[397.5px]
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
-          <Template3 />
+          <Template4 />
         </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (
-            <Button key={index} action={el.action} icon={el.icon} />
+            <CricleButton key={index} action={el.action} icon={el.icon} />
           ))}
-          <Print ref={ref} />
+          <PrintButton ref={ref} />
         </div>
       </div>
-      <AnimatePresence>
-        {isTemplateOption && (
-          <TemplateOption isTemplateOption={isTemplateOption} />
-        )}
-      </AnimatePresence>
+      <AnimatePresence>{isTemplateOption && <DesignOption />}</AnimatePresence>
     </section>
   );
 }

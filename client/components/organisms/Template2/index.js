@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Avatar } from "./Avatar";
 import { LeftData } from "./LeftData";
 import { RightData } from "./RightData";
 
@@ -6,14 +6,7 @@ export const Template2 = () => {
   return (
     <div className="flex h-full w-full">
       <div className="h-full bg-[#335384] w-1/3 text-indigo-50">
-        <div className="py-10 flex justify-center mb-5">
-          <Image
-            className="rounded-full"
-            width="190px"
-            height="190px"
-            src="https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4"
-          />
-        </div>
+        <Avatar />
         {lefts.map((l, idx) => (
           <LeftData key={idx} l={l} />
         ))}
