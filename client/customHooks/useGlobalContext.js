@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { Loading } from "../../components/organisms/Loading";
+import { Loading } from "../components/organisms/Loading";
 
 const Context = createContext();
 

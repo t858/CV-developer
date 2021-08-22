@@ -1,4 +1,4 @@
-import GlobalContext from "../config/context/GlobalContext";
+import GlobalContext from "../customHooks/useGlobalContext";
 import "../style/index.css"
 import "tailwindcss/tailwind.css";
 

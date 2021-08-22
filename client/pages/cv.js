@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { useGlobalContext } from "../config/context/GlobalContext";
+import { useGlobalContext } from "../customHooks/useGlobalContext";
 import { CricleButton } from "../components/atoms/CircleButton";
 import { PrintButton } from "../components/atoms/PrintButton";
 import { DesignOption } from "../components/molecules/DesignOption";
