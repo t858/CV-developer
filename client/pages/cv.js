@@ -47,8 +47,11 @@ export default function Cv() {
   };
 
   return (
-    <section style={themeTransition} className="relative dark:bg-gray-900">
-      <div className="flex justify-center space-x-5 py-10 ">
+    <section
+      style={themeTransition}
+      className="relative dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none"
+    >
+      <div className="justify-center space-x-5 py-10 overflow-auto hidden lg:flex">
         <div
           ref={ref}
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"

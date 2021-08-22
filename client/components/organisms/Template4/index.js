@@ -1,5 +1,7 @@
 import { Avatar } from "./Avatar";
 import { Layout } from "./Layout";
+import { LeftData } from "./LeftData";
+import { RightData } from "./RightData";
 
 export const Template4 = () => {
   return (
@@ -9,22 +11,7 @@ export const Template4 = () => {
           <Avatar />
           <div className="h-full pt-[308px] w-3/4 mx-auto space-y-6">
             {leftData.map((el, index) => (
-              <div key={index} className="space-y-3">
-                <h6 className="font-semibold uppercase tracking-widest">
-                  {el.title}
-                </h6>
-                {el.data.map((l, idx) => (
-                  <div key={idx} className="space-y-1">
-                    <div>
-                      <p className="uppercase font-semibold text-[#317a8b]">
-                        {l.title}
-                      </p>
-                      <p className="uppercase">{l.subtitle}</p>
-                    </div>
-                    <p className="text-gray-500">{l.text}</p>
-                  </div>
-                ))}
-              </div>
+              <LeftData key={index} el={el} />
             ))}
           </div>
         </div>
@@ -39,22 +26,7 @@ export const Template4 = () => {
               </h4>
             </div>
             {rightData.map((el, index) => (
-              <div key={index} className="space-y-3">
-                <h6 className="font-semibold uppercase tracking-widest">
-                  {el.title}
-                </h6>
-                {el.data.map((l, idx) => (
-                  <div key={idx} className="space-y-1">
-                    <div>
-                      <p className="uppercase font-semibold text-[#317a8b]">
-                        {l.title}
-                      </p>
-                      <p className="uppercase">{l.subtitle}</p>
-                    </div>
-                    <p className="text-gray-500">{l.text}</p>
-                  </div>
-                ))}
-              </div>
+              <RightData key={index} el={el} />
             ))}
           </div>
         </div>
