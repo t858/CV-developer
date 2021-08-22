@@ -3,6 +3,9 @@ import { useGlobalContext } from "../customHooks/useGlobalContext";
 import { CricleButton } from "../components/atoms/CircleButton";
 import { PrintButton } from "../components/atoms/PrintButton";
 import { DesignOption } from "../components/molecules/DesignOption";
+import { Template1 } from "../components/organisms/Template1";
+import { Template2 } from "../components/organisms/Template2";
+import { Template3 } from "../components/organisms/Template3";
 import { Template4 } from "../components/organisms/Template4";
 
 export default function Cv() {
@@ -56,6 +59,9 @@ export default function Cv() {
           ref={ref}
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
+          {/* <Template1/> */}
+          {/* <Template2/> */}
+          {/* <Template3/> */}
           <Template4 />
         </div>
         <div className="space-y-3">

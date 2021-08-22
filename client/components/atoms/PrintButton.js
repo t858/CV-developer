@@ -1,12 +1,15 @@
 import { forwardRef } from "react";
-import ReactToPdf from "react-to-pdf";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import ReactToPdf from "react-to-pdf";
 
 export const PrintButton = forwardRef((props, ref) => {
   return (
     <ReactToPdf targetRef={ref} filename="cv.pdf">
       {({ toPdf }) => (
-        <button
+        <motion.button
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.05 }}
           className="border border-gray-300 rounded-full h-12 w-12 flex justify-center items-center"
           onClick={toPdf}
         >
@@ -16,7 +19,7 @@ export const PrintButton = forwardRef((props, ref) => {
             width={25}
             height={25}
           />
-        </button>
+        </motion.button>
       )}
     </ReactToPdf>
   );

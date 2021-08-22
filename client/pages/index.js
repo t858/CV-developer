@@ -1,15 +1,8 @@
 import { useRouter } from "next/router";
-import { useGlobalContext } from "./_app/GlobalContext";
-
 
 export default function Home() {
-  const { state, dispatch } = useGlobalContext();
   const router = useRouter();
-
-  const getStarted = () =>
-    state.isLogin
-      ? router.push("/dashboard")
-      : dispatch({ type: "SET_MODAL_LOGIN", payload: true });
+  const getStarted = () => router.push("/cv");
 
   return (
     <main className="h-screen w-screen flex justify-center items-center">

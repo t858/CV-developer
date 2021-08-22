@@ -1,5 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../customHooks/useOutsideClick";
 
 export const DesignOption = ({ isOption, setOption }) => {
@@ -14,13 +15,22 @@ export const DesignOption = ({ isOption, setOption }) => {
           animate={{ y: 0 }}
           exit={{ y: "25vh" }}
           transition={{ type: "tween", ease: "easeOut" }}
-          className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-3"
+          className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-5"
         >
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
-          <div className="h-full w-[100px] bg-gray-50 rounded"></div>
+          {templates.map((el, index) => (
+            <motion.div
+              key={index}
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              className="h-full w-[90px] bg-gray-50 relative rounded-md overflow-hidden cursor-pointer"
+            >
+              <Image src={`/assets/thumb/${el}.jpg`} layout="fill" />
+            </motion.div>
+          ))}
         </motion.div>
       )}
     </AnimatePresence>
   );
 };
+
+const templates = [1, 2, 3, 4];

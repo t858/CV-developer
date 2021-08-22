@@ -5,7 +5,7 @@ import { Card } from "./Card";
 export const Template1 = forwardRef((props, ref) => {
   return (
     <div
-      className="flex flex-col justify-center space-y-10"
+      className="flex flex-col justify-center space-y-10 py-10"
       ref={ref}
     >
       {/* head */}
