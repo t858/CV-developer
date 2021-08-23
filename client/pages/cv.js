@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import { useGlobalContext } from "../customHooks/useGlobalContext";
 import { CricleButton } from "../components/atoms/CircleButton";
 import { PrintButton } from "../components/atoms/PrintButton";
@@ -11,6 +11,7 @@ import { Template4 } from "../components/organisms/Template4";
 export default function Cv() {
   const [isOption, setOption] = useState(false);
   const { state, dispatch } = useGlobalContext();
+  const [currentTemplate, setCurrentTemplate] = useState(1);
   const ref = useRef();
 
   const togleTheme = () => {
@@ -49,6 +50,21 @@ export default function Cv() {
     MozTransition: "all .5s ease",
   };
 
+  const Template = () => {
+    switch (currentTemplate) {
+      case 1:
+        return <Template1 />;
+      case 2:
+        return <Template2 />;
+      case 3:
+        return <Template3 />;
+      case 4:
+        return <Template4 />;
+      default:
+        return <p>no template detected</p>;
+    }
+  };
+
   return (
     <section
       style={themeTransition}
@@ -59,10 +75,7 @@ export default function Cv() {
           ref={ref}
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
-          {/* <Template1/> */}
-          {/* <Template2/> */}
-          {/* <Template3/> */}
-          <Template4 />
+          <Template />
         </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (
@@ -71,7 +84,11 @@ export default function Cv() {
           <PrintButton ref={ref} />
         </div>
       </div>
-      <DesignOption isOption={isOption} setOption={setOption} />
+      <DesignOption
+        isOption={isOption}
+        setOption={setOption}
+        setCurrentTemplate={setCurrentTemplate}
+      />
     </section>
   );
 }

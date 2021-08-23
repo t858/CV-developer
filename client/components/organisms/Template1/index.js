@@ -1,13 +1,9 @@
-import { forwardRef } from "react";
 import Image from "next/image";
 import { Card } from "./Card";
 
-export const Template1 = forwardRef((props, ref) => {
+export const Template1 = () => {
   return (
-    <div
-      className="flex flex-col justify-center space-y-10 py-10"
-      ref={ref}
-    >
+    <div className="flex flex-col justify-center space-y-10 py-10">
       {/* head */}
       <div className="flex items-center w-full space-x-8 px-14">
         <Image
@@ -36,4 +32,4 @@ export const Template1 = forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+};

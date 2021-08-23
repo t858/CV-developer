@@ -3,9 +3,11 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../customHooks/useOutsideClick";
 
-export const DesignOption = ({ isOption, setOption }) => {
+export const DesignOption = ({ isOption, setOption, setCurrentTemplate }) => {
   const ref = useRef();
   useOutsideClick(ref, () => isOption && setOption(false));
+
+  console.log("design option rendered");
   return (
     <AnimatePresence>
       {isOption && (
@@ -20,11 +22,12 @@ export const DesignOption = ({ isOption, setOption }) => {
           {templates.map((el, index) => (
             <motion.div
               key={index}
+              onClick={() => setCurrentTemplate(el)}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               className="h-full w-[90px] bg-gray-50 relative rounded-md overflow-hidden cursor-pointer"
             >
-              <Image src={`/assets/thumb/${el}.jpg`} layout="fill" />
+              <Image src={`/assets/thumb/${el}.jpeg`} layout="fill" />
             </motion.div>
           ))}
         </motion.div>

@@ -6,6 +6,7 @@ const Context = createContext();
 const initialState = {
   isLoading: false,
   isDark: false,
+  currentTemplate: 1,
 };
 
 const reducer = (state, action) => {
@@ -19,6 +20,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         isDark: action.payload,
+      };
+    case "SET_CURRENT_TEMPLATE":
+      return {
+        ...state,
+        currentTemplate: action.payload,
       };
     default:
       return state;
