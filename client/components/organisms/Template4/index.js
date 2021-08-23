@@ -18,7 +18,7 @@ export const Template4 = () => {
         <div className="w-1/2 flex flex-col justify-center px-4 pr-12">
           <div className="w-full h-[75%] space-y-6">
             <div className="space-y-4 ">
-              <h1 className="font-bold text-5xl text-[#317a8b]">
+              <h1 className="font-bold text-5xl text-[color:var(--primary-color)]">
                 Alfirman Ejha Pahlepi
               </h1>
               <h4 className="text-lg font-semibold tracking-[0.4em] uppercase">

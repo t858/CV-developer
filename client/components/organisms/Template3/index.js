@@ -7,7 +7,7 @@ export const Template3 = () => {
   return (
     <div className="flex h-full w-full">
       <div className="w-2/5 flex items-center">
-        <div className="h-[85%] w-full border-8 border-l-0 border-[#10375d]">
+        <div className="h-[85%] w-full border-8 border-l-0 border-[color:var(--primary-color)]">
           <Avatar />
           <div className="w-5/6 mx-auto ">
             <Name />

@@ -6,8 +6,6 @@ import { useOutsideClick } from "../../customHooks/useOutsideClick";
 export const DesignOption = ({ isOption, setOption, setCurrentTemplate }) => {
   const ref = useRef();
   useOutsideClick(ref, () => isOption && setOption(false));
-
-  console.log("design option rendered");
   return (
     <AnimatePresence>
       {isOption && (

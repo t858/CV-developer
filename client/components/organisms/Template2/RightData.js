@@ -3,7 +3,7 @@ import React from "react";
 export const RightData = ({ l }) => {
   return (
     <div className="space-y-2 mb-8">
-      <h4 className="uppercase text-xl text-[#335384] font-bold tracking-widest">
+      <h4 className="uppercase text-xl text-[color:var(--primary-color)] font-bold tracking-widest">
         {l.title}
       </h4>
       <ul className="space-y-1">
