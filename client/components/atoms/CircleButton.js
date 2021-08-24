@@ -1,7 +1,8 @@
 import { useRef } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../customHooks/useOutsideClick";
+import { Heroicons } from "./Heroicons";
+import { colorSwatchIcon } from "../../assets/svg";
 
 export const CricleButton = ({
   action,
@@ -10,19 +11,19 @@ export const CricleButton = ({
   setShowColor,
   setColor,
 }) => {
-  const palete = "/assets/icon/palete.png";
-
   const ref = useRef();
   useOutsideClick(ref, () => isShowColor && setShowColor(false));
 
   return (
-    <motion.button
+    <button
       ref={ref}
       onClick={action}
       className="border border-gray-300 rounded-full h-12 w-12 flex relative"
     >
       <AnimatePresence>
-        {icon === palete && isShowColor && <Theme setColor={setColor} />}
+        {icon === colorSwatchIcon && isShowColor && (
+          <Theme setColor={setColor} />
+        )}
       </AnimatePresence>
       <motion.span
         initial={{ rotate: 360 }}
@@ -30,14 +31,13 @@ export const CricleButton = ({
         transition={{ duration: 1, ease: "easeIn", type: "spring" }}
         className="w-full h-full flex items-center justify-center"
       >
-        <Image
-          src={icon}
-          width={25}
-          height={25}
-          className="filter dark:invert"
+        <Heroicons
+          d={icon}
+          size="h-7 w-7"
+          color="text-gray-700 dark:text-gray-100"
         />
       </motion.span>
-    </motion.button>
+    </button>
   );
 };
 

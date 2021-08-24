@@ -7,6 +7,13 @@ import { Template1 } from "../components/organisms/Template1";
 import { Template2 } from "../components/organisms/Template2";
 import { Template3 } from "../components/organisms/Template3";
 import { Template4 } from "../components/organisms/Template4";
+import {
+  colorSwatchIcon,
+  leftArrowIcon,
+  listIcon,
+  moonIcon,
+  sunIcon,
+} from "../assets/svg";
 
 export default function Cv() {
   const [isOption, setOption] = useState(false);
@@ -29,19 +36,19 @@ export default function Cv() {
 
   const buttons = [
     {
-      icon: "/assets/icon/arrow.png",
+      icon: leftArrowIcon,
       action: () => alert("belum diatur"),
     },
     {
-      icon: `/assets/icon/${state.isDark ? "moon" : "sun"}.png`,
+      icon: state.isDark ? moonIcon : sunIcon,
       action: () => togleTheme(),
     },
     {
-      icon: "/assets/icon/list.png",
+      icon: listIcon,
       action: () => setOption(!isOption),
     },
     {
-      icon: "/assets/icon/palete.png",
+      icon: colorSwatchIcon,
       action: () => setShowColor(!isShowColor),
     },
   ];
