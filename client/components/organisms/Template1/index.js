@@ -8,12 +8,13 @@ export const Template1 = () => {
 
   const pushData = () => {
     const newData = {
-      title: "Lorem Ipsum Lorem",
+      title: "new",
       text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
     };
-    data.data.push(newData);
-    setData({ ...data, data: data.data });
+    setData({ ...data, data: [...data.data, newData] });
   };
+
+  console.log("render", data.data.length);
   return (
     <div className="flex flex-col justify-center space-y-10 py-10 ">
       {/* head */}
