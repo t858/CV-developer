@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Data } from "./Data";
 import { motion } from "framer-motion";
 
-export const Template1 = ({ theme }) => {
+export const Template1 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
 
   const pushData = () => {
@@ -14,12 +14,8 @@ export const Template1 = ({ theme }) => {
     setData({ ...data, data: [...data.data, newData] });
   };
 
-  console.log("render", data.data.length);
   return (
-    <div
-      style={theme}
-      className="flex flex-col justify-center space-y-10 py-10 "
-    >
+    <div className="flex flex-col justify-center space-y-10 py-10 ">
       {/* head */}
       <div className="flex items-center w-full space-x-8 px-14">
         <Image
@@ -31,21 +27,25 @@ export const Template1 = ({ theme }) => {
 
         <div className="space-y-3 w-full">
           <h1
-            role="textbox"
-            contentEditable
-            suppressContentEditableWarning
-            className="font-extrabold text-5xl tracking-wider text-[color:var(--primary-color)] hover:ring overflow-hidden"
+            role={isEdit ? "textbox" : "heading"}
+            contentEditable={isEdit}
+            suppressContentEditableWarning={isEdit}
+            className={`${
+              isEdit && "hover:ring"
+            } font-extrabold text-5xl tracking-wider text-[color:var(--primary-color)] overflow-hidden`}
             onChange={(e) => setData({ ...data, name: e.target.value })}
           >
             {data.name}
           </h1>
           <h3
-            role="textbox"
-            contentEditable
-            suppressContentEditableWarning
+            role={isEdit ? "textbox" : "heading"}
+            contentEditable={isEdit}
+            suppressContentEditableWarning={isEdit}
             onChange={(e) => setData({ ...data, title: e.target.value })}
             value={data.title}
-            className="text-xl font-semibold hover:ring overflow-hidden"
+            className={`${
+              isEdit && "hover:ring"
+            } text-xl font-semibold overflow-hidden`}
           >
             {data.title}
           </h3>
@@ -60,6 +60,7 @@ export const Template1 = ({ theme }) => {
             index={index}
             data={data}
             setData={setData}
+            isEdit={isEdit}
           />
         ))}
         <div className="flex items-center justify-center" onClick={pushData}>
@@ -75,10 +76,6 @@ export const Template1 = ({ theme }) => {
       </div>
     </div>
   );
-};
-
-Template1.defaultProps = {
-  theme: { ["--none"]: "#fff" },
 };
 
 const defaultData = {

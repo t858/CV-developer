@@ -8,10 +8,12 @@ import { Template2 } from "../components/organisms/Template2";
 import { Template3 } from "../components/organisms/Template3";
 import { Template4 } from "../components/organisms/Template4";
 import {
+  checkIcon,
   colorSwatchIcon,
   leftArrowIcon,
   listIcon,
   moonIcon,
+  pencilIcon,
   sunIcon,
 } from "../assets/svg";
 
@@ -20,6 +22,7 @@ export default function Cv() {
   const { state, dispatch } = useGlobalContext();
   const [currentTemplate, setCurrentTemplate] = useState(1);
   const [isShowColor, setShowColor] = useState(false);
+  const [isEdit, setEdit] = useState(false);
   const [color, setColor] = useState("c335384");
   const ref = useRef();
 
@@ -51,6 +54,10 @@ export default function Cv() {
       icon: colorSwatchIcon,
       action: () => setShowColor(!isShowColor),
     },
+    {
+      icon: isEdit ? checkIcon : pencilIcon,
+      action: () => setEdit(!isEdit),
+    },
   ];
 
   const themeTransition = {
@@ -62,13 +69,13 @@ export default function Cv() {
   const Template = () => {
     switch (currentTemplate) {
       case 1:
-        return <Template1 />;
+        return <Template1 isEdit={isEdit} />;
       case 2:
-        return <Template2 />;
+        return <Template2 isEdit={isEdit} />;
       case 3:
-        return <Template3 />;
+        return <Template3 isEdit={isEdit} />;
       case 4:
-        return <Template4 />;
+        return <Template4 isEdit={isEdit} />;
       default:
         return <p>no template detected</p>;
     }
@@ -97,7 +104,7 @@ export default function Cv() {
               setColor={setColor}
             />
           ))}
-          <PrintButton ref={ref} />
+          {!isEdit && <PrintButton ref={ref} />}
         </div>
       </div>
       <DesignOption

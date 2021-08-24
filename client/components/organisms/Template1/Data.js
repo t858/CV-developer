@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const Data = ({ el, index, data, setData }) => {
+export const Data = ({ el, index, data, setData, isEdit }) => {
   const handleChange = (e) => {
     data.data[index][e.target.name] = e.target.value;
     setData({ ...data, data: data.data });
@@ -14,10 +14,12 @@ export const Data = ({ el, index, data, setData }) => {
   return (
     <div className="space-y-1 relative group">
       <h6
-        role="textbox"
-        contentEditable
-        suppressContentEditableWarning
-        className="uppercase font-bold text-[color:var(--primary-color)] hover:ring overflow-hidden"
+        role={isEdit ? "textbox" : "heading"}
+        contentEditable={isEdit}
+        suppressContentEditableWarning={isEdit}
+        className={`${
+          isEdit && "hover:ring"
+        } uppercase font-bold text-[color:var(--primary-color)] overflow-hidden`}
         onChange={(e) => handleChange(e)}
       >
         {el.title}
@@ -25,22 +27,24 @@ export const Data = ({ el, index, data, setData }) => {
 
       <p
         name="text"
-        role="textbox"
-        contentEditable
-        suppressContentEditableWarning
+        role={isEdit ? "textbox" : "contentinfo"}
+        contentEditable={isEdit}
+        suppressContentEditableWarning={isEdit}
         onChange={(e) => handleChange(e)}
-        className="text-sm hover:ring overflow-hidden"
+        className={`${isEdit && "hover:ring"} text-sm overflow-hidden`}
       >
         {el.text}
       </p>
-      <motion.span
-        onClick={onDelete}
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.3 }}
-        className="opacity-0 group-hover:opacity-100 absolute -top-2 -right-3 font-bold text-lg text-red-500 hover:text-red-600 cursor-pointer"
-      >
-        x
-      </motion.span>
+      {isEdit && (
+        <motion.span
+          onClick={onDelete}
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.3 }}
+          className="opacity-0 group-hover:opacity-100 absolute -top-2 -right-3 font-bold text-lg text-red-500 hover:text-red-600 cursor-pointer"
+        >
+          x
+        </motion.span>
+      )}
     </div>
   );
 };
