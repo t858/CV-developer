@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Data } from "./Data";
 import { motion } from "framer-motion";
 
-export const Template1 = () => {
+export const Template1 = ({ theme }) => {
   const [data, setData] = useState(defaultData);
 
   const pushData = () => {
@@ -16,7 +16,10 @@ export const Template1 = () => {
 
   console.log("render", data.data.length);
   return (
-    <div className="flex flex-col justify-center space-y-10 py-10 ">
+    <div
+      style={theme}
+      className="flex flex-col justify-center space-y-10 py-10 "
+    >
       {/* head */}
       <div className="flex items-center w-full space-x-8 px-14">
         <Image
@@ -72,6 +75,10 @@ export const Template1 = () => {
       </div>
     </div>
   );
+};
+
+Template1.defaultProps = {
+  theme: { ["--none"]: "#fff" },
 };
 
 const defaultData = {

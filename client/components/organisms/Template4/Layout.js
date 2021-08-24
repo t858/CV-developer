@@ -1,6 +1,6 @@
-export const Layout = ({ children }) => {
+export const Layout = ({ children, theme }) => {
   return (
-    <div className="flex flex-col h-full w-full relative">
+    <div style={{ theme }} className="flex flex-col h-full w-full relative">
       <div
         style={{ borderLeft: "500px solid var(--primary-color)" }}
         className="triangle-top absolute -top-24"
@@ -21,3 +21,8 @@ export const Layout = ({ children }) => {
     </div>
   );
 };
+
+Layout.defaultProps = {
+  theme: { ["--none"]: "#fff" },
+};
+

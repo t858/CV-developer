@@ -34,7 +34,8 @@ export const CricleButton = ({
         <Heroicons
           d={icon}
           size="h-7 w-7"
-          color="text-gray-700 dark:text-gray-100"
+          strokeWidth={2}
+          color="text-gray-600 dark:text-gray-100"
         />
       </motion.span>
     </button>

@@ -3,9 +3,9 @@ import { Layout } from "./Layout";
 import { LeftData } from "./LeftData";
 import { RightData } from "./RightData";
 
-export const Template4 = () => {
+export const Template4 = ({ theme }) => {
   return (
-    <Layout>
+    <Layout theme={theme}>
       <div className="flex h-full w-full before:block">
         <div className="w-1/2 flex items-center">
           <Avatar />

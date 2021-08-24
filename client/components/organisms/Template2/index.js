@@ -2,9 +2,9 @@ import { Avatar } from "./Avatar";
 import { LeftData } from "./LeftData";
 import { RightData } from "./RightData";
 
-export const Template2 = () => {
+export const Template2 = ({ theme }) => {
   return (
-    <div className="flex h-full w-full">
+    <div style={theme} className="flex h-full w-full">
       <div className="h-full bg-[color:var(--primary-color)] w-1/3 text-indigo-50">
         <Avatar />
         {lefts.map((l, idx) => (
@@ -24,6 +24,10 @@ export const Template2 = () => {
       </div>
     </div>
   );
+};
+
+Template2.defaultProps = {
+  theme: { ["--none"]: "#fff" },
 };
 
 const lefts = [

@@ -3,9 +3,9 @@ import { LeftData } from "./LeftData";
 import { Name } from "./Name";
 import { RightData } from "./Rightdata";
 
-export const Template3 = () => {
+export const Template3 = ({ theme }) => {
   return (
-    <div className="flex h-full w-full">
+    <div style={theme} className="flex h-full w-full">
       <div className="w-2/5 flex items-center">
         <div className="h-[85%] w-full border-8 border-l-0 border-[color:var(--primary-color)]">
           <Avatar />
@@ -26,6 +26,10 @@ export const Template3 = () => {
       </div>
     </div>
   );
+};
+
+Template3.defaultProps = {
+  theme: { ["--none"]: "#fff" },
 };
 
 const leftData = [

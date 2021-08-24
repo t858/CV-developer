@@ -18,7 +18,8 @@ export const PrintButton = forwardRef((props, ref) => {
           <Heroicons
             d={printIcon}
             size="h-7 w-7"
-            color="text-gray-700 dark:text-gray-100"
+            strokeWidth={2}
+            color="text-gray-600 dark:text-gray-100"
             src="/assets/icon/print.png"
           />
         </motion.button>
