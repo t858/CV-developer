@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useGlobalContext } from "../customHooks/useGlobalContext";
 import { CricleButton } from "../components/atoms/CircleButton";
 import { PrintButton } from "../components/atoms/PrintButton";
@@ -52,16 +52,16 @@ export default function Cv() {
     MozTransition: "all .5s ease",
   };
 
-  const Template = ({ color }) => {
+  const Template = () => {
     switch (currentTemplate) {
       case 1:
-        return <Template1 color={color} />;
+        return <Template1 />;
       case 2:
-        return <Template2 color={color} />;
+        return <Template2 />;
       case 3:
-        return <Template3 color={color} />;
+        return <Template3 />;
       case 4:
-        return <Template4 color={color} />;
+        return <Template4 />;
       default:
         return <p>no template detected</p>;
     }
@@ -77,7 +77,7 @@ export default function Cv() {
           ref={ref}
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
-          <Template color={color} />
+          <Template />
         </div>
         <div className="space-y-3">
           {buttons.map((el, index) => (

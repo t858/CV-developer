@@ -7,6 +7,16 @@ textarea,
 textarea:focus,
 select,
 select:focus,
+span,
+span:focus,
+h1,
+h1:focus,
+h3,
+h3:focus,
+h6,
+h6:focus
+p,
+p:focus,
 a {
   outline: none;
   text-decoration: none;
