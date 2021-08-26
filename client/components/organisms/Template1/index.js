@@ -3,18 +3,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Data } from "./Data";
 import { Name } from "./Name";
-import { Title } from "./Title";
 
 export const Template1 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
 
-  const pushData = () => {
-    const newData = {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    };
-    setData({ ...data, data: [...data.data, newData] });
-  };
+  const pushData = () => setData({ ...data, data: [...data.data, newData] });
 
   return (
     <div className="flex flex-col justify-center space-y-10 py-10 ">
@@ -27,10 +20,7 @@ export const Template1 = ({ isEdit }) => {
           src="https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4"
         />
 
-        <div className="space-y-3 w-full">
-          <Name isEdit={isEdit} data={data} setData={setData} />
-          <Title isEdit={isEdit} data={data} setData={setData} />
-        </div>
+        <Name isEdit={isEdit} data={data} setData={setData} />
       </div>
       {/* main */}
       <div className="w-3/4 ml-28 border-l-4 border-[color:var(--primary-color)] p-5 grid grid-cols-2 gap-6">
@@ -94,4 +84,9 @@ const defaultData = {
       text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
     },
   ],
+};
+
+const newData = {
+  title: "Lorem Ipsum Lorem",
+  text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
 };

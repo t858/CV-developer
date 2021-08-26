@@ -5,19 +5,13 @@ import { Contact } from "./Contact";
 import { LeftData } from "./LeftData";
 import { Name } from "./Name";
 import { RightData } from "./RightData";
-import { Title } from "./Title";
 
 export const Template2 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
 
-  const pushData = (e) => {
-    const newData = {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    };
+  const pushData = (e) =>
     setData({ ...data, [e.target.id]: [...data[e.target.id], newData] });
-  };
-  
+
   return (
     <div className="flex h-full w-full">
       <div className="h-full bg-[color:var(--primary-color)] w-1/3 text-indigo-50">
@@ -53,10 +47,7 @@ export const Template2 = ({ isEdit }) => {
         )}
       </div>
       <div className="h-full w-2/3 px-10 py-16">
-        <div className="space-y-4 mb-20">
-          <Name isEdit={isEdit} data={data} setData={setData} />
-          <Title isEdit={isEdit} data={data} setData={setData} />
-        </div>
+        <Name isEdit={isEdit} data={data} setData={setData} />
         {data.rightData.map((l, idx) => (
           <RightData
             key={idx}
@@ -125,4 +116,9 @@ const defaultData = {
       text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
     },
   ],
+};
+
+const newData = {
+  title: "Lorem Ipsum Lorem",
+  text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
 };

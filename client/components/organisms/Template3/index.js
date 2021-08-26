@@ -8,20 +8,9 @@ import { RightData } from "./Rightdata";
 export const Template3 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
 
-  const pushData = (e) => {
-    const newData = () => {
-      switch (e.target.id) {
-        case "leftData":
-          return newLeftData;
-        case "rightData":
-          return newRightData;
-        default:
-          return alert("something went wrong");
-      }
-    };
-    setData({ ...data, [e.target.id]: [...data[e.target.id], newData()] });
-  };
-  console.log(data);
+  const pushData = (e) =>
+    setData({ ...data, [e.target.id]: [...data[e.target.id], newData(e)] });
+
   return (
     <div className="flex h-full w-full">
       <div className="w-2/5 flex items-center">
@@ -156,4 +145,15 @@ const defaultData = {
       ],
     },
   ],
+};
+
+const newData = (e) => {
+  switch (e.target.id) {
+    case "leftData":
+      return newLeftData;
+    case "rightData":
+      return newRightData;
+    default:
+      return alert("something went wrong");
+  }
 };

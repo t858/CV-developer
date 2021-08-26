@@ -28,11 +28,6 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
   };
 
   const pushData = () => {
-    const newData = {
-      title: "Software engineer",
-      subtitle: "Lorem Technology | Jan 1999 - Now",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    };
     data.rightData[index].data = [...data.rightData[index].data, newData];
     setData({ ...data, rightData: data.rightData });
   };
@@ -79,7 +74,7 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
               <TextareaAutosize
                 name="text"
                 value={l.text}
-                className="text-sm text-gray-600 overflow-hidden w-full resize-none"
+                className="hover:ring text-sm text-gray-600 overflow-hidden w-full resize-none"
                 onChange={(e) => handleDataChange(e, idx)}
               />
 
@@ -120,4 +115,10 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
       )}
     </div>
   );
+};
+
+const newData = {
+  title: "Software engineer",
+  subtitle: "Lorem Technology | Jan 1999 - Now",
+  text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
 };
