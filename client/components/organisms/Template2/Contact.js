@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
 export const Contact = ({ l, isEdit, data, setData }) => {
   const handleChange = (e, index) => {
@@ -7,44 +7,42 @@ export const Contact = ({ l, isEdit, data, setData }) => {
     setData({ ...data, contact: { ...data.contact, data: data.contact.data } });
   };
 
-  console.log(data);
-
   return (
     <div className="space-y-4 mb-14">
-      <h4
-        role={isEdit ? "textbox" : "heading"}
-        contentEditable={isEdit}
-        suppressContentEditableWarning={isEdit}
-        onChange={(e) =>
-          setData({
-            ...data,
-            contact: { ...data.contact, title: e.target.value },
-          })
-        }
-        className={`${
-          isEdit && "hover:ring"
-        } uppercase text-xl font-bold text-center tracking-widest`}
-      >
-        {l.title}
-      </h4>
+      {!isEdit ? (
+        <h4 className="uppercase text-xl font-bold text-center tracking-widest">
+          {l.title}
+        </h4>
+      ) : (
+        <TextareaAutosize
+          value={l.title}
+          className="hover:ring uppercase text-xl font-bold text-center tracking-widest overflow-hidden w-full resize-none bg-transparent px-5"
+          onChange={(e) =>
+            setData({
+              ...data,
+              contact: { ...data.contact, title: e.target.value },
+            })
+          }
+        />
+      )}
       <ul className="w-3/4 mx-auto space-y-2">
         {l.data.map((el, index) => (
           <li
             key={index}
             className={` flex items-center text-sm ${el.icon && "space-x-4"}`}
           >
-            {el.icon && (
-              <Image width={20} height={20} src={el.icon} alt={el.icon} />
+            <Image width={20} height={20} src={el.icon} alt={el.icon} />
+            {!isEdit ? (
+              <span onChange={(e) => handleChange(e, index)} className="w-full">
+                {el.text}
+              </span>
+            ) : (
+              <TextareaAutosize
+                value={el.text}
+                className="hover:ring overflow-hidden w-full resize-none bg-transparent"
+                onChange={(e) => handleChange(e, index)}
+              />
             )}
-            <span
-              role={isEdit ? "textbox" : "contentinfo"}
-              contentEditable={isEdit}
-              suppressContentEditableWarning={isEdit}
-              onChange={(e) => handleChange(e, index)}
-              className={`${isEdit && "hover:ring"} w-full`}
-            >
-              {el.text}
-            </span>
           </li>
         ))}
       </ul>

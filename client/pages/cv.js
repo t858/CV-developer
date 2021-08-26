@@ -19,12 +19,14 @@ import {
 import { AnimatePresence } from "framer-motion";
 
 export default function Cv() {
-  const [isOption, setOption] = useState(false);
   const { state, dispatch } = useGlobalContext();
+  
   const [currentTemplate, setCurrentTemplate] = useState(1);
   const [isShowColor, setShowColor] = useState(false);
+  const [isOption, setOption] = useState(false);
   const [isEdit, setEdit] = useState(false);
   const [color, setColor] = useState("c335384");
+
   const ref = useRef();
 
   const togleTheme = () => {
