@@ -9,6 +9,7 @@ import { Title } from "./Title";
 
 export const Template2 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
+
   const pushData = (e) => {
     const newData = {
       title: "Lorem Ipsum Lorem",
@@ -16,7 +17,7 @@ export const Template2 = ({ isEdit }) => {
     };
     setData({ ...data, [e.target.id]: [...data[e.target.id], newData] });
   };
-  console.log(data);
+  
   return (
     <div className="flex h-full w-full">
       <div className="h-full bg-[color:var(--primary-color)] w-1/3 text-indigo-50">
