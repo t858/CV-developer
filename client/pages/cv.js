@@ -16,6 +16,7 @@ import {
   pencilIcon,
   sunIcon,
 } from "../assets/svg";
+import { AnimatePresence } from "framer-motion";
 
 export default function Cv() {
   const [isOption, setOption] = useState(false);
@@ -104,7 +105,9 @@ export default function Cv() {
               setColor={setColor}
             />
           ))}
-          {!isEdit && <PrintButton ref={ref} />}
+          <AnimatePresence>
+            {!isEdit && <PrintButton ref={ref} />}
+          </AnimatePresence>
         </div>
       </div>
       <DesignOption

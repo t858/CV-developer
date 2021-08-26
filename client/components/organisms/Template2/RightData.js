@@ -6,20 +6,7 @@ export const RightData = ({ l }) => {
       <h4 className="uppercase text-xl text-[color:var(--primary-color)] font-bold tracking-widest">
         {l.title}
       </h4>
-      <ul className="space-y-1">
-        {l.data.map((el, index) => (
-          <li
-            key={index}
-            className={`
-                flex items-center text-sm ${el.icon && "space-x-4"}`}
-          >
-            {el.icon && (
-              <Image width={20} height={20} src={el.icon} alt={el.icon} />
-            )}
-            <span className="w-full">{el.text}</span>
-          </li>
-        ))}
-      </ul>
+      <p className="text-sm">{l.text}</p>
     </div>
   );
 };

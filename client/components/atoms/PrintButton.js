@@ -10,8 +10,10 @@ export const PrintButton = forwardRef((props, ref) => {
       {({ toPdf }) => (
         <motion.button
           onClick={toPdf}
-          initial={{ rotate: 360 }}
+          initial={{ rotate: 360, y: "100vh" }}
+          animate={{ y: 0 }}
           whileHover={{ rotate: 0 }}
+          exit={{ y: "100vh" }}
           transition={{ duration: 1, ease: "easeIn", type: "spring" }}
           className="border border-gray-300 rounded-full h-12 w-12 flex justify-center items-center"
         >

@@ -1,24 +1,52 @@
+import { useState } from "react";
 import { Avatar } from "./Avatar";
+import { Contact } from "./Contact";
 import { LeftData } from "./LeftData";
 import { RightData } from "./RightData";
 
-export const Template2 = ({ theme }) => {
+export const Template2 = ({ isEdit }) => {
+  const [data, setData] = useState(defaultData);
   return (
-    <div style={theme} className="flex h-full w-full">
+    <div className="flex h-full w-full">
       <div className="h-full bg-[color:var(--primary-color)] w-1/3 text-indigo-50">
         <Avatar />
-        {lefts.map((l, idx) => (
+        <Contact
+          l={data.contact}
+          isEdit={isEdit}
+          data={data}
+          setData={setData}
+        />
+        {data.leftData.map((l, idx) => (
           <LeftData key={idx} l={l} />
         ))}
       </div>
       <div className="h-full w-2/3 px-10 py-16">
         <div className="space-y-4 mb-20">
-          <h1 className="text-5xl font-bold text-[color:var(--primary-color)] tracking-wider">
-            Alfirman Ejha Pahlepi
-          </h1>
-          <h4 className="font-semibold text-3xl">Calon Programmer</h4>
+          <input
+            role={isEdit ? "textbox" : "heading"}
+            contentEditable={isEdit}
+            suppressContentEditableWarning={isEdit}
+            value={data.name}
+            onChange={(e) => setData({ ...data, name: e.target.value })}
+            className={`${
+              isEdit && "hover:ring"
+            } text-5xl font-bold text-[color:var(--primary-color)] tracking-wider overflow-hidden`}
+          />
+            {/* {data.name} */}
+          {/* </input> */}
+          <h4
+            role={isEdit ? "textbox" : "heading"}
+            contentEditable={isEdit}
+            suppressContentEditableWarning={isEdit}
+            onChange={(e) => setData({ ...data, title: e.target.value })}
+            className={`${
+              isEdit && "hover:ring"
+            } font-semibold text-3xl overflow-hidden`}
+          >
+            {data.title}
+          </h4>
         </div>
-        {rights.map((l, idx) => (
+        {data.rightData.map((l, idx) => (
           <RightData key={idx} l={l} />
         ))}
       </div>
@@ -26,12 +54,10 @@ export const Template2 = ({ theme }) => {
   );
 };
 
-Template2.defaultProps = {
-  theme: { ["--none"]: "#fff" },
-};
-
-const lefts = [
-  {
+const defaultData = {
+  name: "Alfirman Ejha Pahlepi",
+  title: "Calon Programmer",
+  contact: {
     title: "Hubungi Saya",
     data: [
       {
@@ -48,55 +74,24 @@ const lefts = [
       },
     ],
   },
-  {
-    title: "What is Lorem",
-    data: [
-      { text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the" },
-      { text: "What is Lorem Ipsum" },
-      { text: "What is Lorem Ipsum" },
-    ],
-  },
-  {
-    title: "What is Lorem",
-    data: [
-      { text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the" },
-      { text: "What is Lorem Ipsum" },
-      { text: "What is Lorem Ipsum" },
-    ],
-  },
-  {
-    title: "What is Lorem",
-    data: [
-      { text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the" },
-      { text: "What is Lorem Ipsum" },
-      { text: "What is Lorem Ipsum" },
-    ],
-  },
-];
-
-const rights = [
-  {
-    title: "What is Lorem",
-    data: [
-      {
-        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the  Lorem Ipsum Lorem Ipsum is simply dummy text of the Lorem Ipsum Lorem Ipsum is simply dummy text of the  Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-      },
-    ],
-  },
-  {
-    title: "What is Lorem",
-    data: [
-      { text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the" },
-      { text: "What is Lorem Ipsum" },
-      { text: "What is Lorem Ipsum" },
-    ],
-  },
-  {
-    title: "What is Lorem",
-    data: [
-      { text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the" },
-      { text: "What is Lorem Ipsum" },
-      { text: "What is Lorem Ipsum" },
-    ],
-  },
-];
+  leftData: [
+    {
+      title: "What is Lorem",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+    },
+    {
+      title: "What is Lorem",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+    },
+  ],
+  rightData: [
+    {
+      title: "What is Lorem",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+    },
+    {
+      title: "What is Lorem",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+    },
+  ],
+};

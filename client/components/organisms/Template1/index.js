@@ -1,18 +1,22 @@
 import { useState } from "react";
 import Image from "next/image";
-import { Data } from "./Data";
 import { motion } from "framer-motion";
+import { Data } from "./Data";
+import { Name } from "./Name";
+import { Title } from "./Title";
 
 export const Template1 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
 
   const pushData = () => {
     const newData = {
-      title: "new",
+      title: "Lorem Ipsum Lorem",
       text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
     };
     setData({ ...data, data: [...data.data, newData] });
   };
+
+  console.log(data);
 
   return (
     <div className="flex flex-col justify-center space-y-10 py-10 ">
@@ -26,29 +30,8 @@ export const Template1 = ({ isEdit }) => {
         />
 
         <div className="space-y-3 w-full">
-          <h1
-            role={isEdit ? "textbox" : "heading"}
-            contentEditable={isEdit}
-            suppressContentEditableWarning={isEdit}
-            className={`${
-              isEdit && "hover:ring"
-            } font-extrabold text-5xl tracking-wider text-[color:var(--primary-color)] overflow-hidden`}
-            onChange={(e) => setData({ ...data, name: e.target.value })}
-          >
-            {data.name}
-          </h1>
-          <h3
-            role={isEdit ? "textbox" : "heading"}
-            contentEditable={isEdit}
-            suppressContentEditableWarning={isEdit}
-            onChange={(e) => setData({ ...data, title: e.target.value })}
-            value={data.title}
-            className={`${
-              isEdit && "hover:ring"
-            } text-xl font-semibold overflow-hidden`}
-          >
-            {data.title}
-          </h3>
+          <Name isEdit={isEdit} data={data} setData={setData} />
+          <Title isEdit={isEdit} data={data} setData={setData} />
         </div>
       </div>
       {/* main */}
