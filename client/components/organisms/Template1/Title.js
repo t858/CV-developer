@@ -8,6 +8,6 @@ export const Title = ({ data, setData, isEdit }) => {
       value={data.title}
       className="hover:ring text-xl font-semibold text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
       onChange={(e) => setData({ ...data, title: e.target.value })}
-    ></TextareaAutosize>
+    />
   );
 };

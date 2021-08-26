@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TextareaAutosize from "react-textarea-autosize";
 
 export const Data = ({ el, index, data, setData, isEdit }) => {
   const handleChange = (e) => {
@@ -7,34 +8,36 @@ export const Data = ({ el, index, data, setData, isEdit }) => {
   };
 
   const onDelete = () => {
-    const exceptSeletedData = data.data.filter((el) => el !== data.data[index]);
-    setData({ ...data, data: exceptSeletedData });
+    const allExceptSeletedData = data.data.filter(
+      (el) => el !== data.data[index]
+    );
+    setData({ ...data, data: allExceptSeletedData });
   };
 
   return (
     <div className="space-y-1 relative group">
-      <h6
-        role={isEdit ? "textbox" : "heading"}
-        contentEditable={isEdit}
-        suppressContentEditableWarning={isEdit}
-        className={`${
-          isEdit && "hover:ring"
-        } uppercase font-bold text-[color:var(--primary-color)] overflow-hidden`}
-        onChange={(e) => handleChange(e)}
-      >
-        {el.title}
-      </h6>
-
-      <p
-        name="text"
-        role={isEdit ? "textbox" : "contentinfo"}
-        contentEditable={isEdit}
-        suppressContentEditableWarning={isEdit}
-        onChange={(e) => handleChange(e)}
-        className={`${isEdit && "hover:ring"} text-sm overflow-hidden`}
-      >
-        {el.text}
-      </p>
+      {!isEdit ? (
+        <h6 className="uppercase font-bold text-[color:var(--primary-color)] overflow-hidden">
+          {el.title}
+        </h6>
+      ) : (
+        <TextareaAutosize
+          name="title"
+          value={data.data[index].title}
+          className="hover:ring uppercase font-bold text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
+          onChange={(e) => handleChange(e)}
+        />
+      )}
+      {!isEdit ? (
+        <p className="text-sm overflow-hidden">{el.text}</p>
+      ) : (
+        <TextareaAutosize
+          name="text"
+          value={data.data[index].text}
+          className="hover:ring text-sm  text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
+          onChange={(e) => handleChange(e)}
+        />
+      )}
       {isEdit && (
         <motion.span
           onClick={onDelete}
