@@ -75,27 +75,6 @@ export const Template3 = ({ isEdit }) => {
   );
 };
 
-const newLeftData = {
-  title: "Lorem Ipsum Lorem",
-  text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-};
-
-const newRightData = {
-  title: "PENGALAMAN KERJA",
-  data: [
-    {
-      title: "Software engineer",
-      subtitle: "Lorem Technology | Jan 1999 - Now",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-    {
-      title: "Software engineer",
-      subtitle: "Lorem Technology | Jan 1999 - Now",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-  ],
-};
-
 const defaultData = {
   name: "Alfirman Ejha Pahlepi",
   title: "Mahasiswa",
@@ -143,6 +122,27 @@ const defaultData = {
           text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
         },
       ],
+    },
+  ],
+};
+
+const newLeftData = {
+  title: "Lorem Ipsum Lorem",
+  text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
+};
+
+const newRightData = {
+  title: "PENGALAMAN KERJA",
+  data: [
+    {
+      title: "Software engineer",
+      subtitle: "Lorem Technology | Jan 1999 - Now",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+    },
+    {
+      title: "Software engineer",
+      subtitle: "Lorem Technology | Jan 1999 - Now",
+      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
     },
   ],
 };

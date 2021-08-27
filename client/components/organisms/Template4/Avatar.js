@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Avatar = () => {
   return (
-    <div className="flex justify-center py-20 w-1/2 z-10 absolute left-0 top-0">
+    <div className="flex justify-center py-20 w-1/2 absolute left-0 top-0">
       <div className="rounded-full border-[15px] border-white overflow-hidden h-[220px] w-[220px]">
         <Image
           width="220px"
