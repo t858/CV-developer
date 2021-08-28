@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import TextareaAutosize from "react-textarea-autosize";
 
-export const Data = ({ el, isEdit, data, setData, index, id }) => {
+export const Data = ({ el, isEdit, data, setData, index, id, setCurrentData }) => {
   const handleTitleChange = (e) => {
     data[id][index].title = e.target.value;
     setData({ ...data, [id]: data[id] });
@@ -16,7 +16,7 @@ export const Data = ({ el, isEdit, data, setData, index, id }) => {
     const allExceptSeletedData = data[id].filter(
       (el) => el !== data[id][index]
     );
-    setData({ ...data, [id]: allExceptSeletedData });
+    setCurrentData({ ...data, [id]: allExceptSeletedData });
   };
 
   const onDataDelete = (idx) => {
@@ -24,7 +24,7 @@ export const Data = ({ el, isEdit, data, setData, index, id }) => {
       (el) => el !== data[id][index].data[idx]
     );
     data[id][index].data = allExceptSeletedData;
-    setData({ ...data, [id]: data[id] });
+    setCurrentData({ ...data, [id]: data[id] });
   };
 
   return (
@@ -37,6 +37,7 @@ export const Data = ({ el, isEdit, data, setData, index, id }) => {
             value={el.title}
             className="hover:ring font-semibold uppercase tracking-widest overflow-hidden w-full resize-none bg-transparent"
             onChange={(e) => handleTitleChange(e)}
+            onBlur={()=>setCurrentData(data)}
           />
           <motion.span
             onClick={onTitleDelete}
@@ -72,12 +73,14 @@ export const Data = ({ el, isEdit, data, setData, index, id }) => {
                       value={l.title}
                       className="hover:ring uppercase font-semibold text-[color:var(--primary-color)] overflow-hidden w-full resize-none bg-transparent"
                       onChange={(e) => handleDataChange(e, idx)}
+                      onBlur={()=>setCurrentData(data)}
                     />
                     <TextareaAutosize
                       name="subtitle"
                       value={l.subtitle}
                       className="hover:ring uppercase overflow-hidden w-full resize-none bg-transparent"
                       onChange={(e) => handleDataChange(e, idx)}
+                      onBlur={()=>setCurrentData(data)}
                     />
                   </div>
                   <motion.span
@@ -95,6 +98,7 @@ export const Data = ({ el, isEdit, data, setData, index, id }) => {
                 value={l.text}
                 className="hover:ring text-gray-500 overflow-hidden w-full resize-none bg-transparent"
                 onChange={(e) => handleDataChange(e, idx)}
+                onBlur={()=>setCurrentData(data)}
               />
             </>
           )}
