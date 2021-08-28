@@ -3,6 +3,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Data } from "./Data";
 import { Name } from "./Name";
+import { Heroicons } from "../../atoms/Heroicons";
+import { cameraIcon1, cameraIcon2 } from "../../../assets/svg";
 
 export const Template1 = ({ isEdit }) => {
   const [data, setData] = useState(defaultData);
@@ -13,12 +15,24 @@ export const Template1 = ({ isEdit }) => {
     <div className="flex flex-col justify-center space-y-10 py-10 ">
       {/* head */}
       <div className="flex items-center w-full space-x-8 px-14">
-        <Image
-          width="150px"
-          height="150px"
-          className="rounded-full"
-          src="https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4"
-        />
+        <motion.div
+          whileHover="hover"
+          initial="initial"
+          className=" group relative"
+        >
+          <Image
+            width="150px"
+            height="150px"
+            className="rounded-full"
+            src="https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4"
+          />
+          <motion.div
+            variants={toRightTop}
+            className="absolute rounded-full h-7 w-7 bg-white border -top-3 -right-3 flex items-center justify-center cursor-pointer"
+          >
+            <Heroicons d={cameraIcon1} d2={cameraIcon2} size="h-5 w-5" />
+          </motion.div>
+        </motion.div>
 
         <Name isEdit={isEdit} data={data} setData={setData} />
       </div>
@@ -49,6 +63,19 @@ export const Template1 = ({ isEdit }) => {
       </div>
     </div>
   );
+};
+
+const toRightTop = {
+  initial: {
+    x: -20,
+    y: 20,
+    opacity: 0,
+  },
+  hover: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+  },
 };
 
 const defaultData = {

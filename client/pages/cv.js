@@ -20,7 +20,7 @@ import { AnimatePresence } from "framer-motion";
 
 export default function Cv() {
   const { state, dispatch } = useGlobalContext();
-  
+
   const [currentTemplate, setCurrentTemplate] = useState(1);
   const [isShowColor, setShowColor] = useState(false);
   const [isOption, setOption] = useState(false);
@@ -51,7 +51,10 @@ export default function Cv() {
     },
     {
       icon: listIcon,
-      action: () => setOption(!isOption),
+      action: () => {
+        setOption(!isOption);
+        setEdit(false);
+      },
     },
     {
       icon: colorSwatchIcon,
