@@ -21,7 +21,7 @@ export const Avatar = ({ onImageChange, data, isEdit }) => {
             />
             <input
               type="file"
-              accept="image/*, image/jpg, image/jpeg"
+              accept="image/png, image/jpg, image/jpeg"
               className="absolute inset-0 opacity-0"
               onChange={(e) => onImageChange(e)}
             />
