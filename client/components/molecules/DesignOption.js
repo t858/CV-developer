@@ -19,7 +19,7 @@ export const DesignOption = ({ isOption, setOption, setCurrentTemplate, setCurre
           animate={{ y: 0 }}
           exit={{ y: "25vh" }}
           transition={{ type: "tween", ease: "easeOut" }}
-          className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-5"
+          className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-5 z-50"
         >
           {options.map((el, index) => (
             <motion.div
