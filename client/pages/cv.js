@@ -20,15 +20,14 @@ import { AnimatePresence } from "framer-motion";
 import dataJSON1 from "../components/organisms/Template1/data.json";
 
 export default function Cv() {
-  const { state, dispatch } = useGlobalContext();
+  const ref = useRef();
   const [currentData, setCurrentData] = useState(dataJSON1);
   const [currentTemplate, setCurrentTemplate] = useState(1);
   const [isShowColor, setShowColor] = useState(false);
   const [isOption, setOption] = useState(false);
   const [isEdit, setEdit] = useState(false);
   const [color, setColor] = useState("c335384");
-
-  const ref = useRef();
+  const { state, dispatch } = useGlobalContext();
 
   const togleTheme = () => {
     const body = document.querySelector("body");
@@ -98,26 +97,38 @@ export default function Cv() {
           />
         );
       case 3:
-        return <Template3 isEdit={isEdit} />;
+        return (
+          <Template3
+            isEdit={isEdit}
+            currentData={currentData}
+            setCurrentData={setCurrentData}
+          />
+        );
       case 4:
-        return <Template4 isEdit={isEdit} />;
+        return (
+          <Template4
+            isEdit={isEdit}
+            currentData={currentData}
+            setCurrentData={setCurrentData}
+          />
+        );
       default:
         return <p>no template detected</p>;
     }
   };
 
   return (
-    <section
+    <main
       style={themeTransition}
       className={`${color} bg relative dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none`}
     >
       <div className="justify-center space-x-5 py-10 overflow-auto hidden lg:flex">
-        <div
+        <section
           ref={ref}
           className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
         >
           <Template />
-        </div>
+        </section>
         <div className="space-y-3">
           {buttons.map((el, index) => (
             <CricleButton
@@ -140,6 +151,6 @@ export default function Cv() {
         setCurrentTemplate={setCurrentTemplate}
         setCurrentData={setCurrentData}
       />
-    </section>
+    </main>
   );
 }

@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../customHooks/useOutsideClick";
 import dataJSON1 from "../organisms/Template1/data.json"
 import dataJSON2 from "../organisms/Template2/data.json"
+import dataJSON3 from "../organisms/Template3/data.json"
+import dataJSON4 from "../organisms/Template4/data.json"
 
 export const DesignOption = ({ isOption, setOption, setCurrentTemplate, setCurrentData }) => {
   const ref = useRef();
@@ -42,6 +44,6 @@ export const DesignOption = ({ isOption, setOption, setCurrentTemplate, setCurre
 const options = [
   { template:1, data:dataJSON1 },
   { template:2, data:dataJSON2 },
-  { template:3, data:{} },
-  { template:4, data:{} },
+  { template:3, data:dataJSON3 },
+  { template:4, data:dataJSON4 },
 ]

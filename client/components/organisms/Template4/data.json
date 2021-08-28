@@ -1,0 +1,79 @@
+{
+  "avatar": "https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4",
+  "name": "Alfirman Ejha Pahlepi",
+  "title": "Mahasiswa",
+  "leftData": [
+    {
+      "title": "PROFIsL SAYA",
+      "data": [
+        {
+          "title": "",
+          "subtitle": "",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    },
+    {
+      "title": "AKREDITASI",
+      "data": [
+        {
+          "title": "",
+          "subtitle": "",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    },
+    {
+      "title": "RIWAYAT PEKERJAAN",
+      "data": [
+        {
+          "title": "SMAN 2 KEJURUAN MUDA",
+          "subtitle": "PELAJAR | 2014 - 2017",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        },
+        {
+          "title": "SMAN 2 KEJURUAN MUDA",
+          "subtitle": "PELAJAR | 2014 - 2017",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    }
+  ],
+  "rightData": [
+    {
+      "title": "KONTAK SAYA",
+      "data": [
+        {
+          "title": "",
+          "subtitle": "",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    },
+    {
+      "title": "KEAHLIAN UTAMA",
+      "data": [
+        {
+          "title": "",
+          "subtitle": "",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    },
+    {
+      "title": "RIWAYAT PENDIDIKAN",
+      "data": [
+        {
+          "title": "SMAN 2 KEJURUAN MUDA",
+          "subtitle": "PELAJAR | 2014 - 2017",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        },
+        {
+          "title": "SMAN 2 KEJURUAN MUDA",
+          "subtitle": "PELAJAR | 2014 - 2017",
+          "text": "What is Lorem Ipsum Lorem Ipsum What is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem IpsumWhat is Lorem Ipsum Lorem Ipsum"
+        }
+      ]
+    }
+  ]
+}
