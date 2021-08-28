@@ -5,19 +5,34 @@ import { LeftData } from "./LeftData";
 import { Name } from "./Name";
 import { RightData } from "./Rightdata";
 
-export const Template3 = ({ isEdit }) => {
-  const [data, setData] = useState(defaultData);
+export const Template3 = ({ isEdit, currentData, setCurrentData }) => {
+  const [data, setData] = useState(currentData);
 
   const pushData = (e) =>
-    setData({ ...data, [e.target.id]: [...data[e.target.id], newData(e)] });
+    setCurrentData({
+      ...data,
+      [e.target.id]: [...data[e.target.id], newData(e)],
+    });
+
+  const onImageChange = (e) =>
+    setCurrentData({
+      ...data,
+      avatar: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
 
   return (
     <div className="flex h-full w-full">
       <div className="w-2/5 flex items-center">
         <div className="h-[85%] w-full border-8 border-l-0 border-[color:var(--primary-color)]">
-          <Avatar />
+          <Avatar data={data} isEdit={isEdit} onImageChange={onImageChange} />
           <div className="w-5/6 mx-auto">
-            <Name isEdit={isEdit} data={data} setData={setData} />
+            <Name
+              isEdit={isEdit}
+              data={data}
+              setData={setData}
+              setCurrentData={setCurrentData}
+            />
             {data.leftData.map((el, index) => (
               <LeftData
                 el={el}
@@ -26,6 +41,7 @@ export const Template3 = ({ isEdit }) => {
                 index={index}
                 isEdit={isEdit}
                 setData={setData}
+                setCurrentData={setCurrentData}
               />
             ))}
             {isEdit && (
@@ -54,6 +70,7 @@ export const Template3 = ({ isEdit }) => {
               index={index}
               isEdit={isEdit}
               setData={setData}
+              setCurrentData={setCurrentData}
             />
           ))}
           {isEdit && (
@@ -73,57 +90,6 @@ export const Template3 = ({ isEdit }) => {
       </div>
     </div>
   );
-};
-
-const defaultData = {
-  name: "Alfirman Ejha Pahlepi",
-  title: "Mahasiswa",
-  leftData: [
-    {
-      title: "PROFIL PRIBADI",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-    {
-      title: "keahlian khusus",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-    {
-      title: "informasi kontak",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-  ],
-  rightData: [
-    {
-      title: "PENGALAMAN KERJA",
-      data: [
-        {
-          title: "Software engineer",
-          subtitle: "Lorem Technology | Jan 1999 - Now",
-          text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        },
-        {
-          title: "Software engineer",
-          subtitle: "Lorem Technology | Jan 1999 - Now",
-          text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        },
-      ],
-    },
-    {
-      title: "RIwayat akademis",
-      data: [
-        {
-          title: "Software engineer",
-          subtitle: "Lorem Technology | Jan 1999 - Now",
-          text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        },
-        {
-          title: "Software engineer",
-          subtitle: "Lorem Technology | Jan 1999 - Now",
-          text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        },
-      ],
-    },
-  ],
 };
 
 const newLeftData = {

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import TextareaAutosize from "react-textarea-autosize";
 
-export const RightData = ({ el, isEdit, data, setData, index }) => {
+export const RightData = ({ el, isEdit, data, setData, index, setCurrentData }) => {
   const handleTitleChange = (e) => {
     data.rightData[index].title = e.target.value;
     setData({ ...data, rightData: data.rightData });
@@ -16,7 +16,7 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
     const allExceptSeletedData = data.rightData.filter(
       (el) => el !== data.rightData[index]
     );
-    setData({ ...data, rightData: allExceptSeletedData });
+    setCurrentData({ ...data, rightData: allExceptSeletedData });
   };
 
   const onDataDelete = (idx) => {
@@ -24,12 +24,12 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
       (el) => el !== data.rightData[index].data[idx]
     );
     data.rightData[index].data = allExceptSeletedData;
-    setData({ ...data, rightData: data.rightData });
+    setCurrentData({ ...data, rightData: data.rightData });
   };
 
   const pushData = () => {
     data.rightData[index].data = [...data.rightData[index].data, newData];
-    setData({ ...data, rightData: data.rightData });
+    setCurrentData({ ...data, rightData: data.rightData });
   };
 
   return (
@@ -43,6 +43,7 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
           value={el.title}
           className="hover:ring font-bold text-xl text-[color:var(--primary-color)] uppercase tracking-widest overflow-hidden w-full resize-none bg-gray-300 px-5 py-2"
           onChange={(e) => handleTitleChange(e)}
+          onBlur={()=>setCurrentData(data)}
         />
       )}
       {el?.data?.map((l, idx) => (
@@ -64,18 +65,21 @@ export const RightData = ({ el, isEdit, data, setData, index }) => {
                 value={l.title}
                 className="hover:ring font-bold text-lg text-[color:var(--primary-color)] uppercase overflow-hidden w-full resize-none"
                 onChange={(e) => handleDataChange(e, idx)}
+                onBlur={()=>setCurrentData(data)}
               />
               <TextareaAutosize
                 name="subtitle"
                 value={l.subtitle}
                 className="hover:ring font-semibold text-lg text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
                 onChange={(e) => handleDataChange(e, idx)}
+                onBlur={()=>setCurrentData(data)}
               />
               <TextareaAutosize
                 name="text"
                 value={l.text}
                 className="hover:ring text-sm text-gray-600 overflow-hidden w-full resize-none"
                 onChange={(e) => handleDataChange(e, idx)}
+                onBlur={()=>setCurrentData(data)}
               />
 
               <motion.span
