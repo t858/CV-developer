@@ -1,7 +1,7 @@
 import Image from "next/image";
 import TextareaAutosize from "react-textarea-autosize";
 
-export const Contact = ({ l, isEdit, data, setData }) => {
+export const Contact = ({ l, isEdit, data, setData, setCurrentData }) => {
   const handleChange = (e, index) => {
     data.contact.data[index].text = e.target.value;
     setData({ ...data, contact: { ...data.contact, data: data.contact.data } });
@@ -23,6 +23,7 @@ export const Contact = ({ l, isEdit, data, setData }) => {
               contact: { ...data.contact, title: e.target.value },
             })
           }
+          onBlur={() => setCurrentData(data)}
         />
       )}
       <ul className="w-3/4 mx-auto space-y-2">
@@ -41,6 +42,7 @@ export const Contact = ({ l, isEdit, data, setData }) => {
                 value={el.text}
                 className="hover:ring overflow-hidden w-full resize-none bg-transparent"
                 onChange={(e) => handleChange(e, index)}
+                onBlur={() => setCurrentData(data)}
               />
             )}
           </li>

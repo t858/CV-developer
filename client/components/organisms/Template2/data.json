@@ -1,0 +1,36 @@
+{
+  "avatar": "https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4",
+  "name": "Alfirman Ejha Pahlepi",
+  "title": "Calon Programmer",
+  "contact": {
+    "title": "Hubungi Saya",
+    "data": [
+      {
+        "text": "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
+        "icon": "/assets/icon/map-marker.png"
+      },
+      { "icon": "/assets/icon/mail.png", "text": "What is Lorem Ipsum" },
+      { "icon": "/assets/icon/web.png", "text": "What is Lorem Ipsum" }
+    ]
+  },
+  "leftData": [
+    {
+      "title": "What is Lorem",
+      "text": "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the"
+    },
+    {
+      "title": "What is Lorem",
+      "text": "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the"
+    }
+  ],
+  "rightData": [
+    {
+      "title": "What is Lorem",
+      "text": "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the"
+    },
+    {
+      "title": "What is Lorem",
+      "text": "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the"
+    }
+  ]
+}

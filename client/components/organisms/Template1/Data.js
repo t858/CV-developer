@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import TextareaAutosize from "react-textarea-autosize";
 
-export const Data = ({ el, index, data, setData, isEdit }) => {
+export const Data = ({ el, index, data, setData, isEdit, setCurrentData }) => {
   const handleChange = (e) => {
     data.data[index][e.target.name] = e.target.value;
     setData({ ...data, data: data.data });
@@ -11,7 +11,7 @@ export const Data = ({ el, index, data, setData, isEdit }) => {
     const allExceptSeletedData = data.data.filter(
       (el) => el !== data.data[index]
     );
-    setData({ ...data, data: allExceptSeletedData });
+    setCurrentData({ ...data, data: allExceptSeletedData });
   };
 
   return (
@@ -30,12 +30,14 @@ export const Data = ({ el, index, data, setData, isEdit }) => {
             value={data.data[index].title}
             className="hover:ring uppercase font-bold text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
             onChange={(e) => handleChange(e)}
+            onBlur={() => setCurrentData(data)}
           />
           <TextareaAutosize
             name="text"
             value={data.data[index].text}
             className="hover:ring text-sm  text-[color:var(--primary-color)] overflow-hidden w-full resize-none"
             onChange={(e) => handleChange(e)}
+            onBlur={() => setCurrentData(data)}
           />
           <motion.span
             onClick={onDelete}

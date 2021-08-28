@@ -6,14 +6,18 @@ import { Name } from "./Name";
 import { Heroicons } from "../../atoms/Heroicons";
 import { cameraIcon1, cameraIcon2 } from "../../../assets/svg";
 
-export const Template1 = ({ isEdit }) => {
-  const [data, setData] = useState(defaultData);
-  const [previewImg, setPreviewImg] = useState(defaultData.avatar);
+export const Template1 = ({ isEdit, currentData, setCurrentData }) => {
+  const [data, setData] = useState(currentData);
 
-  const pushData = () => setData({ ...data, data: [...data.data, newData] });
+  const pushData = () =>
+    setCurrentData({ ...data, data: [...data.data, newData] });
 
-  const onImageUpload = (e) =>
-    setPreviewImg(URL.createObjectURL(e.target.files[0]));
+  const onImageChange = (e) =>
+    setCurrentData({
+      ...data,
+      avatar: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
 
   return (
     <div className="flex flex-col justify-center space-y-10 py-10 ">
@@ -22,14 +26,14 @@ export const Template1 = ({ isEdit }) => {
         <motion.div
           whileHover="hover"
           initial="initial"
-          className=" group relative"
+          className="relative"
         >
           <Image
             width="150px"
             height="150px"
             className="rounded-full"
             unoptimized
-            src={previewImg}
+            src={data.avatar}
           />
           {isEdit && (
             <motion.div
@@ -41,17 +45,21 @@ export const Template1 = ({ isEdit }) => {
                 type="file"
                 accept="image/*, image/jpg, image/jpeg"
                 className="absolute inset-0 opacity-0"
-                onChange={(e) => onImageUpload(e)}
+                onChange={(e) => onImageChange(e)}
               />
             </motion.div>
           )}
         </motion.div>
-
-        <Name isEdit={isEdit} data={data} setData={setData} />
+        <Name
+          data={data}
+          isEdit={isEdit}
+          setData={setData}
+          setCurrentData={setCurrentData}
+        />
       </div>
       {/* main */}
       <div className="w-3/4 ml-28 border-l-4 border-[color:var(--primary-color)] p-5 grid grid-cols-2 gap-6">
-        {data.data.map((el, index) => (
+        {data?.data?.map((el, index) => (
           <Data
             el={el}
             key={index}
@@ -59,6 +67,7 @@ export const Template1 = ({ isEdit }) => {
             index={index}
             isEdit={isEdit}
             setData={setData}
+            setCurrentData={setCurrentData}
           />
         ))}
         {isEdit && (
@@ -82,50 +91,13 @@ const toRightTop = {
   initial: {
     x: -20,
     y: 20,
-    opacity: 1,
+    opacity: 0,
   },
   hover: {
     x: 0,
     y: 0,
     opacity: 1,
   },
-};
-
-const defaultData = {
-  avatar:
-    "https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4",
-  name: "Alfirman Ejha Pahlepi",
-  title: "Calon Programmer",
-  data: [
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-    {
-      title: "Lorem Ipsum Lorem",
-      text: " What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's",
-    },
-  ],
 };
 
 const newData = {

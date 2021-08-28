@@ -2,8 +2,10 @@ import { useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../customHooks/useOutsideClick";
+import dataJSON1 from "../organisms/Template1/data.json"
+import dataJSON2 from "../organisms/Template2/data.json"
 
-export const DesignOption = ({ isOption, setOption, setCurrentTemplate }) => {
+export const DesignOption = ({ isOption, setOption, setCurrentTemplate, setCurrentData }) => {
   const ref = useRef();
   useOutsideClick(ref, () => isOption && setOption(false));
   return (
@@ -17,10 +19,13 @@ export const DesignOption = ({ isOption, setOption, setCurrentTemplate }) => {
           transition={{ type: "tween", ease: "easeOut" }}
           className="fixed left-0 bottom-0 w-full h-40 bg-black/80 flex justify-center py-5 space-x-5"
         >
-          {templates.map((el, index) => (
+          {options.map((el, index) => (
             <motion.div
               key={index}
-              onClick={() => setCurrentTemplate(el)}
+              onClick={() => {
+                setCurrentTemplate(el.template);
+                setCurrentData(el.data);
+              }}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               className="h-full w-[90px] bg-gray-50 relative rounded-md overflow-hidden cursor-pointer"
@@ -34,4 +39,9 @@ export const DesignOption = ({ isOption, setOption, setCurrentTemplate }) => {
   );
 };
 
-const templates = [1, 2, 3, 4];
+const options = [
+  { template:1, data:dataJSON1 },
+  { template:2, data:dataJSON2 },
+  { template:3, data:{} },
+  { template:4, data:{} },
+]

@@ -17,10 +17,11 @@ import {
   sunIcon,
 } from "../assets/svg";
 import { AnimatePresence } from "framer-motion";
+import dataJSON1 from "../components/organisms/Template1/data.json";
 
 export default function Cv() {
   const { state, dispatch } = useGlobalContext();
-
+  const [currentData, setCurrentData] = useState(dataJSON1);
   const [currentTemplate, setCurrentTemplate] = useState(1);
   const [isShowColor, setShowColor] = useState(false);
   const [isOption, setOption] = useState(false);
@@ -38,6 +39,11 @@ export default function Cv() {
       body.classList.add("dark");
       dispatch({ type: "SET_DARK", payload: true });
     }
+  };
+
+  const submitData = () => {
+    console.log("data", currentData);
+    setEdit(false);
   };
 
   const buttons = [
@@ -62,7 +68,7 @@ export default function Cv() {
     },
     {
       icon: isEdit ? checkIcon : pencilIcon,
-      action: () => setEdit(!isEdit),
+      action: () => (isEdit ? submitData() : setEdit(true)),
     },
   ];
 
@@ -75,9 +81,22 @@ export default function Cv() {
   const Template = () => {
     switch (currentTemplate) {
       case 1:
-        return <Template1 isEdit={isEdit} />;
+        return (
+          <Template1
+            isEdit={isEdit}
+            currentData={currentData}
+            setCurrentData={setCurrentData}
+          />
+        );
+
       case 2:
-        return <Template2 isEdit={isEdit} />;
+        return (
+          <Template2
+            isEdit={isEdit}
+            currentData={currentData}
+            setCurrentData={setCurrentData}
+          />
+        );
       case 3:
         return <Template3 isEdit={isEdit} />;
       case 4:
@@ -119,6 +138,7 @@ export default function Cv() {
         isOption={isOption}
         setOption={setOption}
         setCurrentTemplate={setCurrentTemplate}
+        setCurrentData={setCurrentData}
       />
     </section>
   );

@@ -6,30 +6,39 @@ import { LeftData } from "./LeftData";
 import { Name } from "./Name";
 import { RightData } from "./RightData";
 
-export const Template2 = ({ isEdit }) => {
-  const [data, setData] = useState(defaultData);
+export const Template2 = ({ isEdit, currentData, setCurrentData }) => {
+  const [data, setData] = useState(currentData);
 
   const pushData = (e) =>
-    setData({ ...data, [e.target.id]: [...data[e.target.id], newData] });
+    setCurrentData({ ...data, [e.target.id]: [...data[e.target.id], newData] });
+
+  const onImageChange = (e) =>
+    setCurrentData({
+      ...data,
+      avatar: URL.createObjectURL(e.target.files[0]),
+      file: e.target.files[0],
+    });
 
   return (
     <div className="flex h-full w-full">
       <div className="h-full bg-[color:var(--primary-color)] w-1/3 text-indigo-50">
-        <Avatar />
+        <Avatar onImageChange={onImageChange} isEdit={isEdit} data={data} />
         <Contact
-          l={data.contact}
-          isEdit={isEdit}
           data={data}
+          isEdit={isEdit}
+          l={data.contact}
           setData={setData}
+          setCurrentData={setCurrentData}
         />
         {data.leftData.map((l, idx) => (
           <LeftData
-            key={idx}
             l={l}
+            key={idx}
+            data={data}
             index={idx}
             isEdit={isEdit}
-            data={data}
             setData={setData}
+            setCurrentData={setCurrentData}
           />
         ))}
         {isEdit && (
@@ -47,7 +56,12 @@ export const Template2 = ({ isEdit }) => {
         )}
       </div>
       <div className="h-full w-2/3 px-10 py-16">
-        <Name isEdit={isEdit} data={data} setData={setData} />
+        <Name
+          isEdit={isEdit}
+          data={data}
+          setData={setData}
+          setCurrentData={setCurrentData}
+        />
         {data.rightData.map((l, idx) => (
           <RightData
             key={idx}
@@ -56,6 +70,7 @@ export const Template2 = ({ isEdit }) => {
             isEdit={isEdit}
             data={data}
             setData={setData}
+            setCurrentData={setCurrentData}
           />
         ))}
         {isEdit && (
@@ -74,48 +89,6 @@ export const Template2 = ({ isEdit }) => {
       </div>
     </div>
   );
-};
-
-const defaultData = {
-  name: "Alfirman Ejha Pahlepi",
-  title: "Calon Programmer",
-  contact: {
-    title: "Hubungi Saya",
-    data: [
-      {
-        text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-        icon: "/assets/icon/map-marker.png",
-      },
-      {
-        icon: "/assets/icon/mail.png",
-        text: "What is Lorem Ipsum",
-      },
-      {
-        icon: "/assets/icon/web.png",
-        text: "What is Lorem Ipsum",
-      },
-    ],
-  },
-  leftData: [
-    {
-      title: "What is Lorem",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-    {
-      title: "What is Lorem",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-  ],
-  rightData: [
-    {
-      title: "What is Lorem",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-    {
-      title: "What is Lorem",
-      text: "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the What is Lorem Ipsum Lorem Ipsum is simply dummy text of the",
-    },
-  ],
 };
 
 const newData = {
