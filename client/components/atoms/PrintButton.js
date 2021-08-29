@@ -9,7 +9,12 @@ export const PrintButton = forwardRef((props, ref) => {
     <ReactToPdf targetRef={ref} filename="cv.pdf">
       {({ toPdf }) => (
         <motion.button
-          onClick={toPdf}
+          // onClick={toPdf}
+          onClick={() =>
+            window.confirm("print cv kamu ?")
+              ? alert("print")
+              : alert("gak jadi print")
+          }
           initial={{ rotate: 360, y: "100vh" }}
           animate={{ y: 0 }}
           whileHover={{ rotate: 0 }}
