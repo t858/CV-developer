@@ -32,7 +32,7 @@ export const DesignOption = ({ isOption, setOption, setCurrentTemplate, setCurre
               whileHover={{ scale: 1.1 }}
               className="h-full w-[90px] bg-gray-50 relative rounded-md overflow-hidden cursor-pointer"
             >
-              <Image src={`/assets/thumb/${el}.jpeg`} layout="fill" />
+              <Image src={`/assets/thumb/${el.template}.jpeg`} layout="fill" />
             </motion.div>
           ))}
         </motion.div>
