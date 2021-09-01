@@ -4,7 +4,6 @@ const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
 const { postUser, getUsers, getUser } = require("../controllers/user.js");
-const { userDataValidation } = require("../midleware/user");
 
 router.post("/", upload.single("img"), postUser);
 router.get("/", getUsers);
