@@ -6,7 +6,7 @@ const User = require("../models/user");
 const uuidv4 = require("uuid-v4");
 const date = require("../utils/date");
 
-exports.postUser = async (req, res, next) => {
+exports.postUser = async (req, res) => {
   if (!req.file)
     return res.status(400).json({ message: "avatar belum diinput" });
 
@@ -15,7 +15,9 @@ exports.postUser = async (req, res, next) => {
 
   const uuid = uuidv4();
 
-  const fileName = "uid/avatar" + path.extname(req.file.originalname);
+  const imageId = Date.now();
+
+  const fileName = `${imageId}/avatar` + path.extname(req.file.originalname);
 
   const imageURL = () => {
     let filepath = fileName;
@@ -36,18 +38,20 @@ exports.postUser = async (req, res, next) => {
   try {
     app.locals.bucket = admin.storage().bucket();
 
-    await app.locals.bucket
+    const isUploaded = await app.locals.bucket
       .file(fileName, option)
       .createWriteStream()
       .end(req.file.buffer);
 
-    const UserData = new User({ userData: req.body.userData });
+    if (!isUploaded)
+      return res.status(500).json({ message: "something went wrong" });
+
+    const UserData = new User({
+      userData: { avatar: { url: imageURL(), id: imageId } },
+      createdAt: date,
+    });
 
     const result = await UserData.save();
-
-    result.userData = { avatar: imageURL() };
-
-    result.createdAt = date;
 
     res.status(201).json({ message: "sukses", result });
   } catch (error) {
@@ -55,6 +59,14 @@ exports.postUser = async (req, res, next) => {
   }
 };
 
-exports.getUsers = () => {};
+exports.getUsers = (req, res) => {};
 
-exports.getUser = () => {};
+exports.getUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await User.findById(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong", error });
+  }
+};
