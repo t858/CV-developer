@@ -10,7 +10,7 @@ exports.postUser = async (req, res) => {
   if (!req.file)
     return res.status(400).json({ message: "avatar belum diinput" });
 
-  if (!req.body.userData)
+  if (!req.body.data)
     return res.status(400).json({ message: "data belum diinput" });
 
   const uuid = uuidv4();
@@ -47,14 +47,19 @@ exports.postUser = async (req, res) => {
       return res.status(500).json({ message: "something went wrong" });
 
     const UserData = new User({
-      userData: { avatar: { url: imageURL(), id: imageId } },
+      userData: {
+        ...JSON.parse(req.body.data),
+        avatar: { url: imageURL(), id: imageId },
+      },
       createdAt: date,
       name: req.body.name,
+      color: req.body?.color || "c335384",
+      template: req.body?.template || 1,
     });
 
     const result = await UserData.save();
 
-    res.status(201).json({ message: "sukses", result });
+    res.status(201).json(result);
   } catch (error) {
     res.status(500).json({ message: "something went wrong", error });
   }

@@ -18,6 +18,7 @@ import {
 } from "../assets/svg";
 import { AnimatePresence } from "framer-motion";
 import dataJSON1 from "../components/organisms/Template1/data.json";
+import { postUserData } from "../config/api";
 
 export default function Cv() {
   const ref = useRef();
@@ -41,8 +42,24 @@ export default function Cv() {
   };
 
   const submitData = () => {
-    console.log("data", currentData);
     setEdit(false);
+    if (!window.confirm("print cv ?")) return alert("dibatalkan !");
+
+    dispatch({ type: "SET_LOADING", payload: true });
+
+    const data = new FormData();
+    data.append("name", currentData.name);
+    data.append("data", JSON.stringify(currentData));
+    data.append("img", currentData.file);
+    data.append("color", color);
+    data.append("template", currentTemplate);
+
+    postUserData(data)
+      .then(() => alert("sukses"))
+      .catch((e) => alert(e.response?.data?.message || "something went wrong"))
+      .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
+
+    console.log(currentData);
   };
 
   const buttons = [
