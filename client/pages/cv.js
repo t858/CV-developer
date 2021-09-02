@@ -19,6 +19,7 @@ import {
 import { AnimatePresence } from "framer-motion";
 import { postUserData } from "../config/api";
 import dataJSON1 from "../components/organisms/Template1/data.json";
+import { useRouter } from "next/router";
 
 export default function Cv() {
   const ref = useRef();
@@ -29,6 +30,7 @@ export default function Cv() {
   const [isEdit, setEdit] = useState(false);
   const [color, setColor] = useState("c335384");
   const { state, dispatch } = useGlobalContext();
+  const router = useRouter();
 
   const togleTheme = () => {
     const body = document.querySelector("body");
@@ -62,7 +64,7 @@ export default function Cv() {
   const buttons = [
     {
       icon: leftArrowIcon,
-      action: () => alert("belum diatur"),
+      action: () => router.push("/"),
     },
     {
       icon: state.isDark ? moonIcon : sunIcon,
