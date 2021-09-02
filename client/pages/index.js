@@ -1,26 +1,42 @@
-import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter();
-  const getStarted = () => router.push("/cv");
+  // const router = useRouter();
+  // const getStarted = () => router.push("/cv");
 
   return (
-    <main className="h-screen w-screen flex justify-center items-center">
-      <div>
-        <h1 className="font-semibold text-6xl">cvmaker.vercel.app</h1>
-        <h6 className="text-xl text-gray-600">build you own cv for free</h6>
-        <div className="flex space-x-5 mt-8">
-          <button className="ring-4 ring-gray-300 text-gray-600 py-2 px-5 text-lg rounded-2xl">
-            Github Repository
-          </button>
-          <button
-            onClick={getStarted}
-            className="ring-4 ring-gray-300 text-gray-600 py-2 px-5 text-lg rounded-2xl"
-          >
-            Get Started
-          </button>
-        </div>
+    <main className="min-h-screen min-w-screen flex justify-center bg-gray-50">
+      <div className="mt-40 w-full h-full text-center space-y-5">
+        <input type="search" className="ring py-1 px-3" />
+
+        <table className="ring w-1/2 mx-auto">
+          <thead>
+            <tr className="border-b border-gray-400">
+              <th className="w-20 py-4">PP</th>
+              <th className="w-20 py-4">Nama</th>
+              <th className="py-4 text-right pr-6">Tanggal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {arr.map((el, index) => (
+              <tr
+                key={index}
+                className="border-b border-gray-300 odd:bg-gray-100"
+              >
+                <td className="w-20 py-2 flex justify-center items-center">
+                  <div className="w-12 h-12 bg-indigo-400 rounded-[50%] border-2 border-white relative overflow-hidden">
+                    <Image src="/assets/thumb/1.jpeg" alt="img" layout="fill" />
+                  </div>
+                </td>
+                <td className="w-20 py-2">Nama</td>
+                <td className="py-2 text-right pr-6">Tanggal</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </main>
   );
 }
+
+const arr = [1, 2, 3, 4, 5, 6];
