@@ -41,8 +41,7 @@ export default function Cv() {
     }
   };
 
-  const submitData = () => {
-    setEdit(false);
+  const submitData = (downloadPDF) => {
     if (!window.confirm("print cv ?")) return alert("dibatalkan !");
 
     dispatch({ type: "SET_LOADING", payload: true });
@@ -55,7 +54,10 @@ export default function Cv() {
     data.append("template", currentTemplate);
 
     postUserData(data)
-      .then(() => alert("sukses"))
+      .then(() => {
+        alert("sukses");
+        downloadPDF();
+      })
       .catch((e) => alert(e.response?.data?.message || "something went wrong"))
       .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
 
@@ -84,7 +86,7 @@ export default function Cv() {
     },
     {
       icon: isEdit ? checkIcon : pencilIcon,
-      action: () => (isEdit ? submitData() : setEdit(true)),
+      action: () => setEdit(!isEdit),
     },
   ];
 
@@ -158,7 +160,7 @@ export default function Cv() {
             />
           ))}
           <AnimatePresence>
-            {!isEdit && <PrintButton ref={ref} />}
+            {!isEdit && <PrintButton ref={ref} submitData={submitData} />}
           </AnimatePresence>
         </div>
       </div>

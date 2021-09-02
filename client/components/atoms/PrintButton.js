@@ -10,11 +10,7 @@ export const PrintButton = forwardRef((props, ref) => {
       {({ toPdf }) => (
         <motion.button
           // onClick={toPdf}
-          onClick={() =>
-            window.confirm("print cv kamu ?")
-              ? alert("print")
-              : alert("gak jadi print")
-          }
+          onClick={() => props.submitData(toPdf)}
           initial={{ rotate: 360, y: "100vh" }}
           animate={{ y: 0 }}
           whileHover={{ rotate: 0 }}
