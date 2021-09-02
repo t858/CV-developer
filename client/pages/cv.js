@@ -17,8 +17,8 @@ import {
   sunIcon,
 } from "../assets/svg";
 import { AnimatePresence } from "framer-motion";
-import dataJSON1 from "../components/organisms/Template1/data.json";
 import { postUserData } from "../config/api";
+import dataJSON1 from "../components/organisms/Template1/data.json";
 
 export default function Cv() {
   const ref = useRef();
@@ -54,14 +54,9 @@ export default function Cv() {
     data.append("template", currentTemplate);
 
     postUserData(data)
-      .then(() => {
-        alert("sukses");
-        downloadPDF();
-      })
+      .then(() => downloadPDF())
       .catch((e) => alert(e.response?.data?.message || "something went wrong"))
       .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
-
-    console.log(currentData);
   };
 
   const buttons = [
@@ -160,7 +155,13 @@ export default function Cv() {
             />
           ))}
           <AnimatePresence>
-            {!isEdit && <PrintButton ref={ref} submitData={submitData} />}
+            {!isEdit && (
+              <PrintButton
+                ref={ref}
+                submitData={submitData}
+                name={currentData.name}
+              />
+            )}
           </AnimatePresence>
         </div>
       </div>

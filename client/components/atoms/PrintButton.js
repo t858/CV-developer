@@ -6,7 +6,7 @@ import { printIcon } from "../../assets/svg";
 
 export const PrintButton = forwardRef((props, ref) => {
   return (
-    <ReactToPdf targetRef={ref} filename="cv.pdf">
+    <ReactToPdf targetRef={ref} filename={`${props.name}.pdf`}>
       {({ toPdf }) => (
         <motion.button
           // onClick={toPdf}
