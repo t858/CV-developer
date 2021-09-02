@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
+  name: { type: String, require: true },
   createdAt: { type: String, require: true },
   userData: { type: Object, require: true },
 });
