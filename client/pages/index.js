@@ -1,25 +1,48 @@
+import Link from "next/link";
+import { plusIcon } from "../assets/svg";
 import { CardUser } from "../components/atoms/CardUser";
+import { Heroicons } from "../components/atoms/Heroicons";
 import { SearchInput } from "../components/atoms/SearchInput";
 import { Pagination } from "../components/molecules/Pagination";
+import { getUsers } from "../config/api";
 
-export default function Home() {
-  // const router = useRouter();
-  // const getStarted = () => router.push("/cv");
+export default function Home({ data }) {
+  // console.log(data);
 
   return (
-    <main className="min-h-screen min-w-screen flex justify-center bg-gray-50 py-20">
+    <main className="min-h-screen min-w-screen flex justify-center bg-gray-50 py-10 relative">
       <div className="w-full h-full space-y-10">
         <h1 className="text-center font-semibold text-3xl">Riwayat pengguna</h1>
         <SearchInput />
         <div className="mx-auto w-1/2 p-2 grid grid-cols-2 gap-5">
-          {arr.map((el, index) => (
-            <CardUser key={index} />
+          {data.data.map((el, index) => (
+            <CardUser key={index} data={el} />
           ))}
         </div>
-        <Pagination />
+        <Pagination
+          currentPage={data.current_page}
+          totalPage={data.total_page}
+        />
       </div>
+      <Link href="/cv">
+        <button className="fixed right-8 bottom-8 h-14 w-14 rounded-full flex justify-center items-center shadow-md border">
+          <Heroicons
+            d={plusIcon}
+            strokeWidth={2}
+            size="h-10 w-10"
+            color="text-gray-600"
+          />
+        </button>
+      </Link>
     </main>
   );
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 1, 1, 1, 1, 1];
+export async function getServerSideProps() {
+  try {
+    const { data } = await getUsers();
+    return { props: { data } };
+  } catch (error) {
+    console.log(error?.response);
+  }
+}

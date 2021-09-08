@@ -1,6 +1,6 @@
 import { Heroicons } from "../../components/atoms/Heroicons";
 import { chevronIcon } from "../../assets/svg";
-export const Pagination = () => {
+export const Pagination = ({ currentPage, totalPage }) => {
   return (
     <div className={`flex justify-between items-center w-1/2 mx-auto`}>
       {/* prev */}
@@ -17,7 +17,7 @@ export const Pagination = () => {
       <p className="sm:hidden">1 / 5</p>
       {/* up to mobile */}
       <div className="hidden sm:flex space-x-2">
-        {pages(1, 10).map((el) => (
+        {pages(currentPage, totalPage).map((el) => (
           <button
             key={el}
             // onClick={() => setCurrentPage(el)}
@@ -47,7 +47,7 @@ export const Pagination = () => {
 };
 
 const pages = (currentPage, totalPages, limit = 5) => {
-  let pages = [];
+  let arr = [];
   const mid = Math.ceil(limit / 2);
   const left = mid - 1;
   const right = limit - mid;
@@ -55,21 +55,21 @@ const pages = (currentPage, totalPages, limit = 5) => {
   if (totalPages >= limit) {
     if (currentPage > mid && currentPage + mid <= totalPages) {
       for (let i = currentPage - left; i <= currentPage + right; i++) {
-        pages.push(i);
+        arr.push(i);
       }
     } else if (currentPage <= mid) {
       for (let i = 1; i <= limit; i++) {
-        pages.push(i);
+        arr.push(i);
       }
     } else if (currentPage + mid > totalPages) {
       for (let i = totalPages - limit + 1; i <= totalPages; i++) {
-        pages.push(i);
+        arr.push(i);
       }
     }
   } else {
     for (let i = 1; i <= totalPages; i++) {
-      pages.push(i);
+      arr.push(i);
     }
   }
-  return pages;
+  return arr;
 };
