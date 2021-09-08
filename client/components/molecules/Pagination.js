@@ -1,12 +1,12 @@
 import { Heroicons } from "../../components/atoms/Heroicons";
 import { chevronIcon } from "../../assets/svg";
-export const Pagination = ({ currentPage, totalPage }) => {
+export const Pagination = ({ currentPage, setCurrentPage, totalPage }) => {
   return (
     <div className={`flex justify-between items-center w-1/2 mx-auto`}>
       {/* prev */}
       <button
-        // disabled={currentPage <= 1}
-        // onClick={() => currentPage > 1 && setCurrentPage((c) => c - 1)}
+        disabled={currentPage <= 1}
+        onClick={() => currentPage > 1 && setCurrentPage((c) => c - 1)}
         className="flex items-center space-x-px focus:outline-none"
       >
         <Heroicons d={chevronIcon} />
@@ -20,9 +20,9 @@ export const Pagination = ({ currentPage, totalPage }) => {
         {pages(currentPage, totalPage).map((el) => (
           <button
             key={el}
-            // onClick={() => setCurrentPage(el)}
+            onClick={() => setCurrentPage(el)}
             className={`${
-              el === 1
+              el === currentPage
                 ? "bg-red-400 text-gray-50"
                 : "hover:bg-gray-200 text-gray-600"
             } py-1 px-3  shadow-md rounded-md focus:outline-none`}
@@ -33,10 +33,8 @@ export const Pagination = ({ currentPage, totalPage }) => {
       </div>
       {/* next */}
       <button
-        // disabled={currentPage === totalPages}
-        // onClick={() =>
-        //   currentPage < totalPages && setCurrentPage((c) => c + 1)
-        // }
+        disabled={currentPage === totalPage}
+        onClick={() => currentPage < totalPage && setCurrentPage((c) => c + 1)}
         className="flex items-center space-x-px focus:outline-none"
       >
         <span>Next</span>
