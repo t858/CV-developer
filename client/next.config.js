@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["avatars.githubusercontent.com","firebasestorage.googleapis.com","awsimages.detik.net.id"],
+    domains: ["www.jobstreet.co.id","firebasestorage.googleapis.com","awsimages.detik.net.id"],
   },
 };
