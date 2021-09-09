@@ -55,6 +55,7 @@ exports.postUser = async (req, res) => {
       name: req.body.name,
       color: req.body?.color || "c335384",
       template: req.body?.template || 1,
+      timestamp: imageId,
     });
 
     const result = await UserData.save();
@@ -71,15 +72,15 @@ exports.getUsers = (req, res) => {
   const search = req.query.search || "";
   const name = new RegExp(search, "i");
   let filter = {};
-  let sort = {};
+  let sort = { timestamp: -1 };
   let totalItems;
   let totalPages;
 
   req.query.category && Object.assign(filter, { category: req.query.category });
 
-  if (req.query.sortBy) {
-    sort[req.query.sortBy] = req.query.orderBy === "desc" ? -1 : 1;
-  }
+  // if (req.query.sortBy) {
+  //   sort[req.query.sortBy] = req.query.orderBy === "desc" ? -1 : 1;
+  // }
 
   User.find({ ...filter, $or: [{ name }] })
     .countDocuments()
