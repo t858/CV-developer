@@ -1,10 +1,22 @@
-export const CardUser = ({ data }) => {
+export const CardUser = ({ data, setImgLoad, isImgLoad }) => {
   const avatar = data.userData.avatar.url;
-
   return (
     <div className="p-2 flex space-x-3 shadow cursor-pointer">
       <div className=" w-1/3 p-2 h-20 relative">
-        <img src={avatar} alt="asd" className="h-full w-full object-cover" />
+        <img
+          onLoad={() => setImgLoad(true)}
+          src={avatar}
+          alt="asd"
+          className="h-full w-full object-cover"
+        />
+        {!isImgLoad && (
+          <div className="lds-ring left-0 top-0 h-full w-full bg-gray-50 flex items-center justify-center">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
       </div>
       <div className=" w-2/3 flex flex-col justify-center">
         <h5 className="font-semibold text-xl text-gray-600">{data.name}</h5>

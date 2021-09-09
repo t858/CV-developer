@@ -11,8 +11,10 @@ export default function Home(props) {
   const [data, setData] = useState(props.data);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isImgLoad, setImgLoad] = useState(false);
 
   const fetchData = useCallback(() => {
+    setImgLoad(false);
     const _ = undefined;
     getUsers(currentPage, _, _, search)
       .then((res) => setData(res.data))
@@ -30,7 +32,12 @@ export default function Home(props) {
         <SearchInput setSearch={setSearch} setCurrentPage={setCurrentPage} />
         <div className="mx-auto w-1/2 p-2 grid grid-cols-2 gap-5">
           {data.data.map((el, index) => (
-            <CardUser key={index} data={el} />
+            <CardUser
+              key={index}
+              data={el}
+              isImgLoad={isImgLoad}
+              setImgLoad={setImgLoad}
+            />
           ))}
         </div>
         <Pagination
