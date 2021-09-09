@@ -16,7 +16,7 @@ export default function Home(props) {
   const fetchData = useCallback(() => {
     setImgLoad(false);
     const _ = undefined;
-    getUsers(currentPage, _, _, search)
+    getUsers(currentPage, search)
       .then((res) => setData(res.data))
       .catch((e) => console.log(e.response));
   }, [search, currentPage]);
@@ -61,10 +61,6 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  try {
-    const { data } = await getUsers();
-    return { props: { data } };
-  } catch (error) {
-    console.log(error?.response);
-  }
+  const { data } = await getUsers();
+  return { props: { data } };
 }

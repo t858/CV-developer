@@ -15,7 +15,7 @@ export const Template1 = ({ isEdit, currentData, setCurrentData }) => {
   const onImageChange = (e) =>
     setCurrentData({
       ...data,
-      avatar: URL.createObjectURL(e.target.files[0]),
+      avatar: { ...data.avatar, url: URL.createObjectURL(e.target.files[0]) },
       file: e.target.files[0],
     });
 
@@ -23,17 +23,13 @@ export const Template1 = ({ isEdit, currentData, setCurrentData }) => {
     <div className="flex flex-col justify-center space-y-10 py-10 ">
       {/* head */}
       <div className="flex items-center w-full space-x-8 px-14">
-        <motion.div
-          whileHover="hover"
-          initial="initial"
-          className="relative"
-        >
+        <motion.div whileHover="hover" initial="initial" className="relative">
           <Image
             width="150px"
             height="150px"
             className="rounded-full"
             unoptimized
-            src={data.avatar}
+            src={data.avatar.url}
           />
           {isEdit && (
             <motion.div

@@ -11,7 +11,7 @@ export const Avatar = ({ isEdit, onImageChange, data }) => {
           unoptimized
           width="190px"
           height="190px"
-          src={data?.avatar}
+          src={data?.avatar.url}
           className="rounded-full"
         />
         {isEdit && (

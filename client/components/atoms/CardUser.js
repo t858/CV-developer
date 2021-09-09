@@ -1,7 +1,14 @@
+import { useRouter } from "next/router";
+
 export const CardUser = ({ data, setImgLoad, isImgLoad }) => {
+  const { push } = useRouter();
   const avatar = data.userData.avatar.url;
+
   return (
-    <div className="p-2 flex space-x-3 shadow cursor-pointer">
+    <div
+      onClick={() => push("/cv/" + data._id)}
+      className="p-2 flex space-x-3 shadow cursor-pointer"
+    >
       <div className=" w-1/3 p-2 h-20 relative">
         <img
           onLoad={() => setImgLoad(true)}

@@ -7,7 +7,7 @@ export const Avatar = ({ onImageChange, data, isEdit }) => {
   return (
     <div className="flex justify-center relative -top-10">
       <motion.div className="relative" whileHover="hover" initial="initial">
-        <Image width="250px" height="250px" src={data?.avatar} unoptimized />
+        <Image width="250px" height="250px" src={data?.avatar.url} unoptimized />
         {isEdit && (
           <motion.div
             variants={toRightTop}

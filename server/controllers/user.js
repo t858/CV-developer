@@ -67,7 +67,7 @@ exports.postUser = async (req, res) => {
 
 exports.getUsers = (req, res) => {
   const currentPage = parseInt(req.query.page) || 1;
-  const perPage = parseInt(req.query.perPage) || 2;
+  const perPage = parseInt(req.query.perPage) || 10;
   const search = req.query.search || "";
   const name = new RegExp(search, "i");
   let filter = {};

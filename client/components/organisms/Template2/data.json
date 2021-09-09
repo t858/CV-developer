@@ -1,5 +1,8 @@
 {
-  "avatar": "https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4",
+  "avatar": {
+    "url": "https://avatars.githubusercontent.com/u/78687274?s=400&u=f68c9fb0da21776fcb1923914a87009508509431&v=4",
+    "id": 1
+  },
   "name": "Alfirman Ejha Pahlepi",
   "title": "Calon Programmer",
   "contact": {

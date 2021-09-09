@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import { useGlobalContext } from "../customHooks/useGlobalContext";
-import { CricleButton } from "../components/atoms/CircleButton";
-import { PrintButton } from "../components/atoms/PrintButton";
-import { DesignOption } from "../components/molecules/DesignOption";
-import { Template1 } from "../components/organisms/Template1";
-import { Template2 } from "../components/organisms/Template2";
-import { Template3 } from "../components/organisms/Template3";
-import { Template4 } from "../components/organisms/Template4";
+import { useGlobalContext } from "../../customHooks/useGlobalContext";
+import { CricleButton } from "../../components/atoms/CircleButton";
+import { PrintButton } from "../../components/atoms/PrintButton";
+import { DesignOption } from "../../components/molecules/DesignOption";
+import { Template1 } from "../../components/organisms/Template1";
+import { Template2 } from "../../components/organisms/Template2";
+import { Template3 } from "../../components/organisms/Template3";
+import { Template4 } from "../../components/organisms/Template4";
 import {
   checkIcon,
   colorSwatchIcon,
@@ -15,10 +15,10 @@ import {
   moonIcon,
   pencilIcon,
   sunIcon,
-} from "../assets/svg";
+} from "../../assets/svg";
 import { AnimatePresence } from "framer-motion";
-import { postUserData } from "../config/api";
-import dataJSON1 from "../components/organisms/Template1/data.json";
+import { postUserData } from "../../config/api";
+import dataJSON1 from "../../components/organisms/Template1/data.json";
 import { useRouter } from "next/router";
 
 export default function Cv() {

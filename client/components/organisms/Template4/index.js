@@ -12,7 +12,7 @@ export const Template4 = ({ isEdit, currentData, setCurrentData }) => {
   const onImageChange = (e) =>
     setCurrentData({
       ...data,
-      avatar: URL.createObjectURL(e.target.files[0]),
+      avatar: { ...data.avatar, url: URL.createObjectURL(e.target.files[0]) },
       file: e.target.files[0],
     });
 
