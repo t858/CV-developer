@@ -27,10 +27,10 @@ export default function Home(props) {
 
   return (
     <main className="min-h-screen min-w-screen flex justify-center bg-gray-50 py-10 relative">
-      <div className="w-full h-full space-y-10">
+      <div className="w-full h-full space-y-8">
         <h1 className="text-center font-semibold text-3xl">Riwayat pengguna</h1>
         <SearchInput setSearch={setSearch} setCurrentPage={setCurrentPage} />
-        <div className="mx-auto w-1/2 p-2 grid grid-cols-2 gap-5">
+        <div className="mx-auto w-11/12 lg:w-1/2 p-2 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {data.data.map((el, index) => (
             <CardUser
               key={index}

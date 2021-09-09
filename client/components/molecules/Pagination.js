@@ -2,7 +2,7 @@ import { Heroicons } from "../../components/atoms/Heroicons";
 import { chevronIcon } from "../../assets/svg";
 export const Pagination = ({ currentPage, setCurrentPage, totalPage }) => {
   return (
-    <div className={`flex justify-between items-center w-1/2 mx-auto`}>
+    <div className={`flex justify-between items-center w-11/12 lg:w-1/2 mx-auto`}>
       {/* prev */}
       <button
         disabled={currentPage <= 1}
