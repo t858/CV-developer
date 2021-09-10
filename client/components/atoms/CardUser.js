@@ -7,7 +7,7 @@ export const CardUser = ({ data, setImgLoad, isImgLoad }) => {
   return (
     <div
       onClick={() => push("/cv/" + data._id)}
-      className="p-2 flex space-x-3 shadow cursor-pointer"
+      className="p-2 flex space-x-3 shadow cursor-pointer bg-white"
     >
       <div className=" w-1/3 p-2 h-20 relative">
         <img
@@ -17,7 +17,7 @@ export const CardUser = ({ data, setImgLoad, isImgLoad }) => {
           className="h-full w-full object-cover"
         />
         {!isImgLoad && (
-          <div className="lds-ring left-0 top-0 h-full w-full bg-gray-50 flex items-center justify-center">
+          <div className="lds-ring left-0 top-0 h-full w-full bg-white flex items-center justify-center">
             <div></div>
             <div></div>
             <div></div>

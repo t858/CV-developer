@@ -26,8 +26,8 @@ export default function Home(props) {
   }, [search, currentPage, fetchData]);
 
   return (
-    <section>
-      <main className="min-h-screen min-w-screen flex justify-center bg-gray-50 py-10 relative">
+    <section className="bg-gray-50">
+      <main className="min-h-screen min-w-screen flex justify-center py-10 relative">
         <div className="w-full h-full space-y-8">
           <h1 className="text-center font-semibold text-3xl">
             Riwayat pengguna
