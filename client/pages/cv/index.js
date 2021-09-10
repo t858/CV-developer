@@ -134,45 +134,58 @@ export default function Cv() {
   };
 
   return (
-    <main
-      style={themeTransition}
-      className={`${color} bg relative dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none`}
-    >
-      <div className="justify-center space-x-5 py-10 overflow-auto hidden lg:flex">
-        <section
-          ref={ref}
-          className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
-        >
-          <Template />
-        </section>
-        <div className="space-y-3">
-          {buttons.map((el, index) => (
-            <CricleButton
-              key={index}
-              action={el.action}
-              icon={el.icon}
-              isShowColor={isShowColor}
-              setShowColor={setShowColor}
-              setColor={setColor}
-            />
-          ))}
-          <AnimatePresence>
-            {!isEdit && (
-              <PrintButton
-                ref={ref}
-                submitData={submitData}
-                name={currentData.name}
+    <section>
+      <main
+        style={themeTransition}
+        className={`${color} bg relative dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none`}
+      >
+        <div className="justify-center space-x-5 py-10 overflow-auto hidden lg:flex">
+          <section
+            ref={ref}
+            className="h-[1122px] w-[795px] bg-white text-gray-800 shadow-lg overflow-hidden"
+          >
+            <Template />
+          </section>
+          <div className="space-y-3">
+            {buttons.map((el, index) => (
+              <CricleButton
+                key={index}
+                action={el.action}
+                icon={el.icon}
+                isShowColor={isShowColor}
+                setShowColor={setShowColor}
+                setColor={setColor}
               />
-            )}
-          </AnimatePresence>
+            ))}
+            <AnimatePresence>
+              {!isEdit && (
+                <PrintButton
+                  ref={ref}
+                  submitData={submitData}
+                  name={currentData.name}
+                />
+              )}
+            </AnimatePresence>
+          </div>
         </div>
-      </div>
-      <DesignOption
-        isOption={isOption}
-        setOption={setOption}
-        setCurrentTemplate={setCurrentTemplate}
-        setCurrentData={setCurrentData}
-      />
-    </main>
+        <DesignOption
+          isOption={isOption}
+          setOption={setOption}
+          setCurrentTemplate={setCurrentTemplate}
+          setCurrentData={setCurrentData}
+        />
+      </main>
+      <footer className="text-center py-3">
+        Made with 🔥 By{" "}
+        <a
+          href="https://github.com/ezza022"
+          target="_blank"
+          className="font-semibold hover:underline"
+        >
+          Alfirman Ejha Pahlepi
+        </a>{" "}
+        ❤️
+      </footer>
+    </section>
   );
 }
