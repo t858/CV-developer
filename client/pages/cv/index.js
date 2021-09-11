@@ -57,7 +57,10 @@ export default function Cv() {
 
     postUserData(data)
       .then(() => downloadPDF())
-      .catch((e) => alert(e.response?.data?.message || "something went wrong"))
+      .catch((e) => {
+        alert(e.response?.data?.message || "something went wrong");
+        console.log(e.response);
+      })
       .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
   };
 
@@ -134,11 +137,11 @@ export default function Cv() {
   };
 
   return (
-    <section>
-      <main
-        style={themeTransition}
-        className={`${color} bg relative dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none`}
-      >
+    <section
+      style={themeTransition}
+      className={`${color} bg relative bg-gray-100 dark:bg-gray-900 before:content-['your_device_screen_not_supported.'] before:text-2xl before:font-semibold before:text-red-600 lg:before:content-none`}
+    >
+      <main>
         <div className="justify-center space-x-5 py-10 overflow-auto hidden lg:flex">
           <section
             ref={ref}
@@ -175,7 +178,7 @@ export default function Cv() {
           setCurrentData={setCurrentData}
         />
       </main>
-      <footer className="text-center py-3">
+      <footer className="text-center py-3 dark:text-white">
         Made with 🔥 By{" "}
         <a
           href="https://github.com/ezza022"

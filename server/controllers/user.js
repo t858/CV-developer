@@ -17,13 +17,11 @@ exports.postUser = async (req, res) => {
 
   const imageId = Date.now();
 
-  const fileName = `${imageId}/avatar` + path.extname(req.file.originalname);
+  const fileName = `${imageId}` + path.extname(req.file.originalname);
 
-  const imageURL = () => {
-    let filepath = fileName;
-    if (fileName.includes("/")) filepath = fileName.replaceAll("/", "%2f");
-    return `https://firebasestorage.googleapis.com/v0/b/cv-maker-f1c88.appspot.com/o/${filepath}?alt=media&token=${uuid}`;
-  };
+  // let filepath = fileName;
+  // if (fileName.includes("/")) filepath = fileName.replaceAll("/", "%2f"); //bug bangsat, di local bisa, di heroku gabisa asw!!
+  const imageURL = `https://firebasestorage.googleapis.com/v0/b/cv-maker-f1c88.appspot.com/o/${fileName}?alt=media&token=${uuid}`;
 
   const option = {
     uploadType: "media",
@@ -44,21 +42,23 @@ exports.postUser = async (req, res) => {
       .end(req.file.buffer);
 
     if (!isUploaded)
-      return res.status(500).json({ message: "something went wrong" });
+      return res.status(500).json({ message: "failed to upload" });
 
     const UserData = new User({
       userData: {
         ...JSON.parse(req.body.data),
-        avatar: { url: imageURL(), id: imageId },
+        avatar: { url: imageURL, id: imageId },
       },
       createdAt: date,
       name: req.body.name,
-      color: req.body?.color || "c335384",
-      template: req.body?.template || 1,
-      timestamp: imageId,
+      color: req.body.color,
+      template: req.body.template,
+      timestamp: Date.now(),
     });
 
-    const result = await UserData.save();
+    const result = await UserData.save().catch((e) =>
+      res.status(500).json({ message: "failed to save", error: e })
+    );
 
     res.status(201).json(result);
   } catch (error) {
@@ -75,12 +75,6 @@ exports.getUsers = (req, res) => {
   let sort = { timestamp: -1 };
   let totalItems;
   let totalPages;
-
-  req.query.category && Object.assign(filter, { category: req.query.category });
-
-  // if (req.query.sortBy) {
-  //   sort[req.query.sortBy] = req.query.orderBy === "desc" ? -1 : 1;
-  // }
 
   User.find({ ...filter, $or: [{ name }] })
     .countDocuments()
