@@ -57,10 +57,7 @@ export default function Cv() {
 
     postUserData(data)
       .then(() => downloadPDF())
-      .catch((e) => {
-        alert(e.response?.data?.message || "something went wrong");
-        console.log(e.response);
-      })
+      .catch((e) => alert(e.response?.data?.message || "something went wrong"))
       .finally(() => dispatch({ type: "SET_LOADING", payload: false }));
   };
 
