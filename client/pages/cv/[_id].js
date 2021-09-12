@@ -190,13 +190,7 @@ export default function CvUser({ data }) {
   );
 }
 
-export async function getStaticPaths() {
-  const { data } = await getAllUser();
-  const paths = data.map((el) => ({ params: { _id: el._id } }));
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { _id } = context.params;
   const { data } = await getUser(_id);
   return { props: { data } };
